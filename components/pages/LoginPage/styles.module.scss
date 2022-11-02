@@ -1,0 +1,36 @@
+.loginPage {
+  max-width: 1200px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  flex-direction: column;
+
+  p {
+    margin-top: 40px;
+  }
+}
+
+.logo {
+  max-width: 300px;
+}
+
+.button {
+  border: 3px solid #fff;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 40px;
+  text-transform: uppercase;
+  &:hover {
+    background-color: #da0001;
+    color: #fff;
+    border-color: #da0001;
+    transform: scale(1.06);
+  }
+}
