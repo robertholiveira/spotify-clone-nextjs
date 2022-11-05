@@ -1,12 +1,30 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import { authOptions } from "pages/api/auth/[...nextauth]";
+import { unstable_getServerSession } from "next-auth/next";
 
-export default function Home() {
-  const { data: session } = useSession();
-
-  return (
-    <div>
-      <h1>Hello Next World</h1>
-      {session && <img src={session.user.image} />}
-    </div>
+export async function getServerSideProps(context) {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
   );
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  } else {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+}
+
+export default function redirectPage() {
+  return <></>;
 }
