@@ -1,12 +1,17 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
-export default function Home() {
-  const { data: session } = useSession();
+import { getUserPlaylists } from "@/services/spotify";
+import { Profile } from "@/components";
 
-  return (
-    <>
-      <h1>Hello Next World</h1>
-      {session && <img src={session.user.image} />}
-    </>
-  );
+// This gets called on every request
+export async function getServerSideProps(ctx) {
+  const session = await getSession(ctx);
+
+  const playlists = await getUserPlaylists(session);
+
+  return { props: { playlists, user: session.user } };
+}
+
+export default function ProfilePage({ playlists, user }) {
+  return <Profile playlists={playlists} user={user} />;
 }

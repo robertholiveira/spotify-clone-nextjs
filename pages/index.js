@@ -26,5 +26,5 @@ export async function getServerSideProps(context) {
 }
 
 export default function redirectPage() {
-  return <></>;
+  return <>teste</>;
 }

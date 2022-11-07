@@ -2,17 +2,17 @@ import Head from "next/head";
 
 import { signIn } from "next-auth/react";
 
-import logo from "public/images/spotify-comuna-logo.png";
+import logo from "public/images/spotify-logo.png";
 
 import styles from "./styles.module.scss";
 
-function LoginPage() {
+function Login() {
   const handleLogin = () => {
     signIn("spotify", { callbackUrl: "/dashboard/profile" });
   };
 
   return (
-    <div>
+    <>
       <Head>
         <title>Login | Spotify </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -26,8 +26,8 @@ function LoginPage() {
         Ao clicar no botão acima você será redirecionado para a página de Login
         do Spotify.
       </p>
-    </div>
+    </>
   );
 }
 
-export default LoginPage;
+export default Login;

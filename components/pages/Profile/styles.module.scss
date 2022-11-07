@@ -1,0 +1,19 @@
+.profileBox {
+  text-align: center;
+  img {
+    margin: 0 auto;
+    border-radius: 50%;
+    max-width: 220px;
+    margin-bottom: 40px;
+    transition: all 0.5s linear;
+    border: 1px solid transparent;
+    &:hover {
+      scale: (1.05);
+      border: 2px solid #1bd760;
+    }
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 30px;
+  }
+}

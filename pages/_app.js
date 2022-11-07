@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import "@nextcss/reset";
 import "../styles/globals.css";
 
-import { DashLayout, AuthLayout } from "components";
+import { DashLayout, AuthLayout } from "@/components";
 
 function App({ Component, pageProps: { session, ...pageProps } }) {
   const { pathname } = useRouter();
