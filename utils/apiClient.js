@@ -1,6 +1,6 @@
-import axios from "@/node_modules/axios/index";
+import axios from "axios";
 
-const apiClient = (session) => {
+const apiClient = (accessToken = null) => {
   const defaultOptions = {
     baseURL: process.env.NEXT_PUBLIC_SPOTIFY_API_BASE_URL,
   };
@@ -8,8 +8,8 @@ const apiClient = (session) => {
   const instance = axios.create(defaultOptions);
 
   instance.interceptors.request.use((request) => {
-    if (session) {
-      request.headers.Authorization = `Bearer ${session.accessToken}`;
+    if (accessToken) {
+      request.headers.Authorization = `Bearer ${accessToken}`;
     }
     return request;
   });

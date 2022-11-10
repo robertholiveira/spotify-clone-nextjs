@@ -11,8 +11,9 @@ export default withAuth(
   },
   {
     callbacks: {
-      authorized: ({ token }) =>
-        Math.floor(Date.now()) <= token.expiresAt * 1000,
+      authorized: ({ token }) => {
+        Date.now() <= token.expiresAt;
+      },
     },
   }
 );

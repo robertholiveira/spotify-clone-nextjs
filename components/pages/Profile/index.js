@@ -1,8 +1,9 @@
 import Head from "next/head";
 
+import { TrackTable, ArtistsList } from "@/components";
 import styles from "./styles.module.scss";
 
-function Profile({ playlists, user }) {
+function Profile({ topTracks, topArtists, user }) {
   return (
     <>
       <Head>
@@ -15,9 +16,11 @@ function Profile({ playlists, user }) {
         <h2>{user.name}</h2>
       </div>
 
-      {playlists.map((playlist, index) => (
-        <p key={index}>{playlist.name}</p>
-      ))}
+      <ArtistsList
+        artists={topArtists}
+        title="Artistas mais escutados por você"
+      />
+      <TrackTable tracks={topTracks} title="Músicas mais escutadas por você" />
     </>
   );
 }
