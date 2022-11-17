@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 import { signIn } from "next-auth/react";
 
 import logo from "public/images/spotify-logo.png";
@@ -13,11 +11,6 @@ function Login() {
 
   return (
     <>
-      <Head>
-        <title>Login | Spotify </title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-
       <img className={styles.logo} src={logo.src} />
       <button onClick={handleLogin} className={styles.button}>
         Fazer login no Spotify

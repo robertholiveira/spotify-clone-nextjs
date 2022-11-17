@@ -2,21 +2,23 @@
   width: 15%;
   text-align: center;
   margin: 0 auto;
-  padding: 30px;
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 90px);
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
   position: fixed;
   left: 0;
+  padding-top: 30px;
 }
 
 .logo {
   max-width: 150px;
+  padding: 0 30px;
 }
 
 .menu {
+  padding: 0 30px;
   width: 100%;
   display: flex;
   flex-direction: column;

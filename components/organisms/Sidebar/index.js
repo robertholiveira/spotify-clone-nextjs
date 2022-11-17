@@ -1,13 +1,12 @@
 import { RiHome4Line, RiSearchLine, RiUser3Line } from "react-icons/ri";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 
+import { useAudio } from "@/lib/AudioContext";
 import styles from "./styles.module.scss";
 import logo from "public/images/spotify-logo.png";
-import { ProfileCard } from "@/components";
 
 function Sidebar() {
-  const { data: session } = useSession();
+  const { currentTrack } = useAudio();
   return (
     <div className={styles.sidebar}>
       <div>
@@ -30,7 +29,7 @@ function Sidebar() {
           </li>
         </ul>
       </div>
-      <ProfileCard user={session?.user} />
+      {currentTrack && <img src={currentTrack.album.images[0].url} />}
     </div>
   );
 }

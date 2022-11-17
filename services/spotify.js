@@ -49,3 +49,24 @@ export const getSearch = async (session, limit, search) => {
   );
   return response ? response.data : {};
 };
+
+export const getRecentlyPlayed = async (session, limit) => {
+  const response = await apiClient(session.accessToken).get(
+    `/me/player/recently-played?limit=${limit}`
+  );
+  return response ? response.data.items : [];
+};
+
+export const getRelatedArtists = async (session, artistId, limit) => {
+  const response = await apiClient(session.accessToken).get(
+    `/artists/${artistId}/related-artists`
+  );
+  return response ? response.data.artists.slice(0, limit) : [];
+};
+
+export const getFeaturedPlaylists = async (session, country, limit) => {
+  const response = await apiClient(session.accessToken).get(
+    `/browse/featured-playlists?limit=${limit}&country=${country}`
+  );
+  return response ? response.data : {};
+};

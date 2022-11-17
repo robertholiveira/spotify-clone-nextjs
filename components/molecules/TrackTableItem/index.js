@@ -1,15 +1,33 @@
-import { RiPlayLine } from "react-icons/ri";
+import { RiPlayLine, RiPauseLine } from "react-icons/ri";
 
 import styles from "./styles.module.scss";
+import { useAudio } from "@/lib/AudioContext";
 
 import msToSecondsAndMinutes from "@/utils/msToSecondsAndMinutes";
 
 function TrackTableItem({ track }) {
+  const { currentTrack, pause, isPlaying } = useAudio();
+
+  const playTrack = () => {
+    setCurrentTrack(track);
+  };
+
+  const isActiveTrack = () => {
+    return currentTrack?.id === track.id;
+  };
+
   return (
-    <tr className={styles.trackItem}>
+    <tr className={`${styles.trackItem} ${isActiveTrack() && styles.active}`}>
       <td>
         <span>
-          <RiPlayLine className={styles.play} />
+          {isActiveTrack() && isPlaying ? (
+            <RiPauseLine onClick={() => pause()} className={styles.playPause} />
+          ) : (
+            <RiPlayLine
+              onClick={() => playTrack()}
+              className={styles.playPause}
+            />
+          )}
         </span>
       </td>
       <td>
@@ -21,7 +39,9 @@ function TrackTableItem({ track }) {
       <td>
         <span>{track.album.name}</span>
       </td>
-      <td>{msToSecondsAndMinutes(track.duration_ms)}</td>
+      <td>
+        <span>{msToSecondsAndMinutes(track.duration_ms)}</span>
+      </td>
     </tr>
   );
 }

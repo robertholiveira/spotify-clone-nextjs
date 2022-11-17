@@ -1,4 +1,5 @@
 import { getSession } from "next-auth/react";
+import Head from "next/head";
 
 import { getUserTopTracks, getUserTopArtists } from "@/services/spotify";
 import Profile from "@/components/pages/Profile";
@@ -14,5 +15,13 @@ export async function getServerSideProps(ctx) {
 }
 
 export default function ProfilePage({ topTracks, topArtists, user }) {
-  return <Profile topTracks={topTracks} topArtists={topArtists} user={user} />;
+  return (
+    <>
+      <Head>
+        <title>Perfil | Spotify </title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Profile topTracks={topTracks} topArtists={topArtists} user={user} />
+    </>
+  );
 }
