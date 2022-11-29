@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import { getUserTopTracks, getUserTopArtists } from "@/services/spotify";
 import Profile from "@/components/pages/Profile";
+import ContentWrapper from "@/components/organisms/ContentWrapper";
 
 // This gets called on every request
 export async function getServerSideProps(ctx) {
@@ -21,7 +22,9 @@ export default function ProfilePage({ topTracks, topArtists, user }) {
         <title>Perfil | Spotify </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Profile topTracks={topTracks} topArtists={topArtists} user={user} />
+      <ContentWrapper>
+        <Profile topTracks={topTracks} topArtists={topArtists} user={user} />
+      </ContentWrapper>
     </>
   );
 }

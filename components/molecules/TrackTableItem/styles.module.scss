@@ -1,18 +1,56 @@
 .trackItem {
-  opacity: 0.7;
   transition: opacity 0.1s linear;
 
   &:hover {
-    opacity: 1;
+    background-color: #ffffff15;
+    & .playPauseWrapper {
+      & .playWrapper {
+        & > span {
+          display: none;
+        }
+        & .playPause {
+          display: inline;
+        }
+      }
+    }
   }
-  & td {
-    padding: 20px 0;
-    border-top: 1px solid #ffffff15;
 
-    & .playPause {
-      width: 30px;
-      margin-right: 20px;
-      cursor: pointer;
+  & td {
+    padding: 15px 0;
+    border-top: 1px solid #ffffff15;
+    border-radius: 2px;
+    & .playPauseWrapper {
+      text-align: center;
+      align-items: center;
+      display: flex;
+      padding-left: 15px;
+
+      & .playWrapper {
+        min-width: 40px;
+        & span {
+          display: inline;
+          padding: 0 10px;
+        }
+
+        & .playPause {
+          display: none;
+        }
+
+        &.activePlaying {
+          & span {
+            display: none;
+          }
+          & .playPause {
+            display: inline;
+          }
+        }
+      }
+
+      & .playPause {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
     }
   }
 
@@ -20,6 +58,15 @@
     opacity: 1;
     & span {
       color: #1bd760;
+    }
+  }
+
+  & .trackName {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    & img {
+      max-width: 40px;
     }
   }
 }

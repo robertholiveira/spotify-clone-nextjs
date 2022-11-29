@@ -1,4 +1,4 @@
-import { ListItem } from "@/components";
+import ListItem from "@/components/molecules/ListItem";
 import noPicture from "public/images/no-picture-artist.jpg";
 
 function ArtistItem({ artist }) {
@@ -10,7 +10,7 @@ function ArtistItem({ artist }) {
     <ListItem
       image={artistImage}
       circleImage={true}
-      link={`/artist/${artist.id}`}
+      link={`/dashboard/artist/${artist.id}`}
       title={artist.name}
     />
   );

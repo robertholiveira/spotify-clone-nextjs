@@ -29,7 +29,10 @@ function Sidebar() {
           </li>
         </ul>
       </div>
-      {currentTrack && <img src={currentTrack.album.images[0].url} />}
+      <img
+        src={currentTrack ? currentTrack.album.images[0].url : ""}
+        className={`${styles.cover} ${currentTrack && styles.active}`}
+      />
     </div>
   );
 }

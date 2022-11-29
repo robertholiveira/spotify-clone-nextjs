@@ -1,6 +1,5 @@
 import { SessionProvider } from "next-auth/react";
 import { useRouter } from "next/router";
-import "react-simple-flex-grid/lib/main.css";
 import "@nextcss/reset";
 
 import "../styles/globals.css";

@@ -1,10 +1,15 @@
+:root {
+  --swiper-pagination-color: #1bd760;
+  --swiper-pagination-bullet-inactive-color: #ffffff;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat";
   color: white;
-  background: #121212;
+  background: #000;
 }
 
 a {
@@ -14,14 +19,4 @@ a {
 
 * {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: #121212;
-  }
 }

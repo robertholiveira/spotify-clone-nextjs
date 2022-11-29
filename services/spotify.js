@@ -1,4 +1,5 @@
 import apiClient from "@/utils/apiClient";
+import addIndexToTracks from "@/utils/addIndexToTracks";
 
 export const refreshToken = async (token) => {
   const url = "https://accounts.spotify.com/api/token";
@@ -33,7 +34,7 @@ export const getUserTopTracks = async (session, limit) => {
   const response = await apiClient(session.accessToken).get(
     `/me/top/tracks?limit=${limit}&time_range=long_term`
   );
-  return response ? response.data.items : [];
+  return response ? addIndexToTracks(response.data.items) : [];
 };
 
 export const getUserTopArtists = async (session, limit) => {
@@ -54,6 +55,7 @@ export const getRecentlyPlayed = async (session, limit) => {
   const response = await apiClient(session.accessToken).get(
     `/me/player/recently-played?limit=${limit}`
   );
+
   return response ? response.data.items : [];
 };
 
@@ -69,4 +71,23 @@ export const getFeaturedPlaylists = async (session, country, limit) => {
     `/browse/featured-playlists?limit=${limit}&country=${country}`
   );
   return response ? response.data : {};
+};
+
+export const getArtist = async (session, id) => {
+  const response = await apiClient(session.accessToken).get(`/artists/${id}`);
+  return response ? response.data : {};
+};
+
+export const getArtistTopTracks = async (session, country, id, limit) => {
+  const response = await apiClient(session.accessToken).get(
+    `/artists/${id}/top-tracks?country=${country}`
+  );
+  return response ? addIndexToTracks(response.data.tracks).slice(0, limit) : [];
+};
+
+export const getArtistAlbums = async (session, id, limit) => {
+  const response = await apiClient(session.accessToken).get(
+    `/artists/${id}/albums?limit=${limit}`
+  );
+  return response ? response.data.items : [];
 };

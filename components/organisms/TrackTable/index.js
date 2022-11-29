@@ -1,7 +1,13 @@
 import { TrackTableItem, Title } from "@/components";
 import styles from "./styles.module.scss";
 
-function TrackTable({ tracks, title }) {
+function TrackTable({
+  tracks,
+  title,
+  showHeader = true,
+  showArtistName = true,
+  showAlbumName = true,
+}) {
   const hasTracks = tracks && tracks.length > 0;
 
   return (
@@ -9,18 +15,25 @@ function TrackTable({ tracks, title }) {
       <>
         <Title>{title}</Title>
         <table className={styles.trackTable}>
-          <thead align="left">
-            <tr>
-              <th></th>
-              <th>Nome</th>
-              <th>Artista</th>
-              <th>Álbum</th>
-              <th>Duração</th>
-            </tr>
-          </thead>
+          {showHeader && (
+            <thead align="left">
+              <tr>
+                <th></th>
+                <th>Nome</th>
+                {showArtistName && <th>Artista</th>}
+                {showAlbumName && <th>Álbum</th>}
+                <th>Duração</th>
+              </tr>
+            </thead>
+          )}
           <tbody>
             {tracks.map((track, index) => (
-              <TrackTableItem track={track} key={index} />
+              <TrackTableItem
+                track={track}
+                showArtistName={showArtistName}
+                showAlbumName={showAlbumName}
+                key={index}
+              />
             ))}
           </tbody>
         </table>

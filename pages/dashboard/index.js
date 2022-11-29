@@ -7,6 +7,7 @@ import {
   getFeaturedPlaylists,
 } from "@/services/spotify";
 import Home from "@/components/pages/Home";
+import ContentWrapper from "@/components/organisms/ContentWrapper";
 
 export async function getServerSideProps(ctx) {
   const session = await getSession(ctx);
@@ -14,7 +15,6 @@ export async function getServerSideProps(ctx) {
   let recentTracks = await getRecentlyPlayed(session, 6);
   recentTracks = recentTracks.map((el) => el.track);
 
-  console.log(recentTracks);
   let relatedArtists = recentTracks[0].artists[0];
   relatedArtists.items = await getRelatedArtists(session, relatedArtists.id, 6);
 
@@ -42,12 +42,14 @@ export default function HomePage({
         <title>Spotify </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Home
-        recentTracks={recentTracks}
-        relatedArtists={relatedArtists}
-        featuredPlaylists={featuredPlaylists}
-        user={user}
-      />
+      <ContentWrapper>
+        <Home
+          recentTracks={recentTracks}
+          relatedArtists={relatedArtists}
+          featuredPlaylists={featuredPlaylists}
+          user={user}
+        />
+      </ContentWrapper>
     </>
   );
 }

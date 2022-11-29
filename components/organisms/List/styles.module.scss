@@ -1,0 +1,17 @@
+.listWrapper {
+  & .swiperSlide {
+    height: auto;
+  }
+
+  & .swiperPagination {
+    margin: 0 auto;
+    transform: initial;
+    padding-top: 20px;
+    & .swiper-pagination-bullet {
+      background: #fff;
+    }
+    & .swiper-pagination-bullet-active {
+      background: #1bd760;
+    }
+  }
+}

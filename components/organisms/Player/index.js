@@ -7,7 +7,7 @@ function Player() {
   const { currentTrack, play, pause } = useAudio();
 
   return (
-    <div className={styles.player}>
+    <div className={`${styles.player} ${currentTrack && styles.active}`}>
       <span>{currentTrack?.name}</span>
       <br />
       <button onClick={() => play()}>Play</button>
