@@ -1,5 +1,6 @@
 import apiClient from "@/utils/apiClient";
 import addIndexToTracks from "@/utils/addIndexToTracks";
+import sortAlbumsByReleaseDate from "@/utils/sortAlbumsByReleaseDate";
 
 export const refreshToken = async (token) => {
   const url = "https://accounts.spotify.com/api/token";
@@ -48,7 +49,15 @@ export const getSearch = async (session, limit, search) => {
   const response = await apiClient(session.accessToken).get(
     `/search?q=${search}&limit=${limit}&type=artist,track`
   );
-  return response ? response.data : {};
+
+  if (response) {
+    const result = {
+      artists: response.data.artists.items,
+      tracks: addIndexToTracks(response.data.tracks.items),
+    };
+    return result;
+  }
+  return {};
 };
 
 export const getRecentlyPlayed = async (session, limit) => {
@@ -87,7 +96,8 @@ export const getArtistTopTracks = async (session, country, id, limit) => {
 
 export const getArtistAlbums = async (session, id, limit) => {
   const response = await apiClient(session.accessToken).get(
-    `/artists/${id}/albums?limit=${limit}`
+    `/artists/${id}/albums?limit=${limit}&include_groups=album,single`
   );
-  return response ? response.data.items : [];
+
+  return response ? sortAlbumsByReleaseDate(response.data.items) : [];
 };

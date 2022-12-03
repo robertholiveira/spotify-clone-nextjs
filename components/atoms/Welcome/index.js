@@ -1,4 +1,4 @@
-import { Title } from "@/components";
+import Title from "../Title";
 import styles from "./styles.module.scss";
 
 function Welcome({ name }) {

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useAudio } from "@/lib/AudioContext";
 
 import styles from "./styles.module.scss";

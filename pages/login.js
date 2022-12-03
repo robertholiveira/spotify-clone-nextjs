@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { Login } from "@/components";
+import Login from "@/components/pages/Login";
 
 function LoginPage() {
   return (

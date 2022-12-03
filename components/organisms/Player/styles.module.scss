@@ -7,6 +7,7 @@
   opacity: 0;
   bottom: -90px;
   transition: all 0.2s linear;
+  z-index: 3;
   &.active {
     opacity: 1;
     bottom: 0;

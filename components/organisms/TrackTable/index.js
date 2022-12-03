@@ -1,4 +1,6 @@
-import { TrackTableItem, Title } from "@/components";
+import TrackTableItem from "@/components/molecules/TrackTableItem";
+import Title from "@/components/atoms/Title";
+
 import styles from "./styles.module.scss";
 
 function TrackTable({

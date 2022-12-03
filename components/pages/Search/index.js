@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 
-import { SearchField, TrackTable, ArtistsList } from "@/components";
 import { getSearch } from "@/services/spotify";
 
-//import styles from "./styles.module.scss";
+import SearchField from "@/components/atoms/SearchField";
+import TrackTable from "@/components/organisms/TrackTable";
+import List from "@/components/organisms/List";
 
 function Search() {
   const { data: session } = useSession();
@@ -19,8 +20,8 @@ function Search() {
     const resultSearch = await getSearch(session, 12, searchRef.current.value);
 
     if (resultSearch) {
-      setArtists(resultSearch.artists.items);
-      setTracks(resultSearch.tracks.items);
+      setArtists(resultSearch.artists);
+      setTracks(resultSearch.tracks);
     }
 
     setTimeout(() => setLoading(false), 1000);
@@ -37,7 +38,7 @@ function Search() {
 
       {!loading && (
         <>
-          <ArtistsList artists={artists} title="Artistas" />
+          <List type="artist" items={artists} title="Artistas" />
           <TrackTable tracks={tracks} title="Músicas" />
         </>
       )}

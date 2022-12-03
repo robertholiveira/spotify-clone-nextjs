@@ -1,7 +1,9 @@
-import { Sidebar, Player } from "@/components";
+import { AudioProvider } from "@/lib/AudioContext";
+
+import Sidebar from "@/components/organisms/Sidebar";
+import Player from "@/components/organisms/Player";
 
 import styles from "./styles.module.scss";
-import { AudioProvider } from "@/lib/AudioContext";
 
 function DashLayout({ children }) {
   return (

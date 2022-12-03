@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 import { FastAverageColor } from "fast-average-color";
 
 import numberWithCommas from "@/utils/numberWithDots";
-import { ContentWrapper, TrackTable } from "@/components";
+
 import List from "@/components/organisms/List";
+import ContentWrapper from "@/components/organisms/ContentWrapper";
+import TrackTable from "@/components/organisms/TrackTable";
+
 import styles from "./styles.module.scss";
 
-function Artist({ artist, topTracks, albums }) {
+function Artist({ artist, topTracks, albums, relatedArtists }) {
   const fac = new FastAverageColor();
   const [imageColor, setImageColor] = useState("");
   const [opacity, setOpacity] = useState(0);
@@ -21,12 +24,11 @@ function Artist({ artist, topTracks, albums }) {
   }, []);
 
   useEffect(() => {
-    const getImageColor = async () => {
+    const getPredominantColor = async () => {
       let colorScheme = await fac.getColorAsync(artistImage);
       setImageColor(colorScheme.hex);
     };
-
-    getImageColor();
+    getPredominantColor();
   }, []);
 
   const artistImage = artist.images.length
@@ -53,7 +55,6 @@ function Artist({ artist, topTracks, albums }) {
       <div
         className={styles.artistContent}
         style={{
-          height: "1000px",
           background: `linear-gradient(0deg, transparent 70%, ${imageColor} 100%)`,
         }}
       >
@@ -65,6 +66,11 @@ function Artist({ artist, topTracks, albums }) {
             showHeader={false}
           />
           <List items={albums} type="album" title="Discografia" />
+          <List
+            items={relatedArtists}
+            type="artist"
+            title="Os fãs também curtem"
+          />
         </ContentWrapper>
       </div>
     </>

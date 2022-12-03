@@ -1,6 +1,5 @@
-import { Welcome, List } from "@/components";
-
-import styles from "./styles.module.scss";
+import Welcome from "@/components/atoms/Welcome";
+import List from "@/components/organisms/List";
 
 function Home({ recentTracks, relatedArtists, featuredPlaylists, user }) {
   return (

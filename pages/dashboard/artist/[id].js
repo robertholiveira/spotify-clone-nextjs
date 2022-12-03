@@ -5,6 +5,7 @@ import {
   getArtist,
   getArtistTopTracks,
   getArtistAlbums,
+  getRelatedArtists,
 } from "@/services/spotify";
 import Artist from "@/components/pages/Artist";
 
@@ -19,17 +20,29 @@ export async function getServerSideProps(ctx) {
 
   const albums = await getArtistAlbums(session, id, 50);
 
-  return { props: { artist, topTracks, albums } };
+  const relatedArtists = await getRelatedArtists(session, id, 6);
+
+  return { props: { artist, topTracks, albums, relatedArtists } };
 }
 
-export default function ArtistPage({ artist, topTracks, albums }) {
+export default function ArtistPage({
+  artist,
+  topTracks,
+  albums,
+  relatedArtists,
+}) {
   return (
     <>
       <Head>
         <title>{`${artist.name} | Spotify`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Artist artist={artist} topTracks={topTracks} albums={albums} />
+      <Artist
+        artist={artist}
+        topTracks={topTracks}
+        albums={albums}
+        relatedArtists={relatedArtists}
+      />
     </>
   );
 }

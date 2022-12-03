@@ -1,4 +1,5 @@
-import { ListItem } from "@/components";
+import ListItem from "../ListItem";
+
 import noPicture from "public/images/no-picture-artist.jpg";
 
 function TrackItem({ track }) {

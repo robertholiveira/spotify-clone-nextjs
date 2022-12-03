@@ -1,4 +1,6 @@
-import { List, TrackTable } from "@/components";
+import List from "@/components/organisms/List";
+import TrackTable from "@/components/organisms/TrackTable";
+
 import styles from "./styles.module.scss";
 
 function Profile({ topTracks, topArtists, user }) {

@@ -5,12 +5,11 @@ function AlbumItem({ album }) {
   const albumImage = album.images.length ? album.images[0].url : noPicture.src;
 
   const getSubTitle = () => {
-    const releaseDate = new Date(album.releaseDate);
+    const releaseDate = new Date(album.release_date);
 
     let albumType = "";
     if (album.album_type === "album") albumType = "Álbum";
     if (album.album_type === "single") albumType = "Single";
-    if (album.album_type === "compilation") albumType = "Compilação";
 
     return `${releaseDate.getFullYear()} • ${albumType}`;
   };
