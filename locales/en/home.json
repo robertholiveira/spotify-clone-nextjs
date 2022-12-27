@@ -1,0 +1,10 @@
+{
+  "welcome": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good night"
+  },
+  "recentlyPlayed": "Recently played",
+  "relatedArtists": "Because you listened to ",
+  "trending": "Trending: "
+}

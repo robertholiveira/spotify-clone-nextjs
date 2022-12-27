@@ -1,15 +1,49 @@
-import { RiPlayMiniFill } from "react-icons/ri";
+import { RiPauseMiniFill, RiPlayMiniFill } from "react-icons/ri";
 import Link from "next/link";
+
+import { useAudio } from "@/lib/AudioContext";
 
 import styles from "./styles.module.scss";
 
-function ListItem({ image, link, title, subTitle, circleImage, onClickPlay }) {
+function ListItem({ image, link, title, subTitle, circleImage, trackToPlay }) {
+  const { handlePause, isPlaying, isActiveTrack, playTrack } = useAudio();
+
+  const onClickPlay = (e) => {
+    e.preventDefault();
+    playTrack(trackToPlay);
+  };
+
+  const onClickPause = (e) => {
+    e.preventDefault();
+    handlePause();
+  };
+
   return (
     <div className={styles.listItemWrapper}>
       <Link href={link}>
         <div className={styles.imageContainer}>
-          <img src={image} className={circleImage && styles.circle} />
-          <RiPlayMiniFill onClick={(e) => onClickPlay(e)} />
+          <img
+            src={image}
+            className={circleImage ? styles.circle : undefined}
+          />
+
+          {isActiveTrack(trackToPlay) && isPlaying ? (
+            <RiPauseMiniFill
+              onClick={onClickPause}
+              className={styles.playPause}
+            />
+          ) : (
+            <div
+              className={`${styles.playWrapper} ${
+                isActiveTrack(trackToPlay) && styles.activePlaying
+              }`}
+            >
+              <RiPlayMiniFill
+                onClick={onClickPlay}
+                className={styles.playPause}
+              />
+            </div>
+          )}
         </div>
         <span className={styles.title}>{title}</span>
         {subTitle && <span className={styles.subTitle}>{subTitle}</span>}

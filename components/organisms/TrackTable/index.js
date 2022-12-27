@@ -1,3 +1,5 @@
+import useTranslation from "next-translate/useTranslation";
+
 import TrackTableItem from "@/components/molecules/TrackTableItem";
 import Title from "@/components/atoms/Title";
 
@@ -9,7 +11,10 @@ function TrackTable({
   showHeader = true,
   showArtistName = true,
   showAlbumName = true,
+  showAlbumImage = true,
 }) {
+  const { t } = useTranslation("common");
+
   const hasTracks = tracks && tracks.length > 0;
 
   return (
@@ -21,10 +26,10 @@ function TrackTable({
             <thead align="left">
               <tr>
                 <th></th>
-                <th>Nome</th>
-                {showArtistName && <th>Artista</th>}
-                {showAlbumName && <th>Álbum</th>}
-                <th>Duração</th>
+                <th>{t("trackTable.name")}</th>
+                {showArtistName && <th>{t("trackTable.artist")}</th>}
+                {showAlbumName && <th>{t("trackTable.album")}</th>}
+                <th>{t("trackTable.duration")}</th>
               </tr>
             </thead>
           )}
@@ -34,6 +39,7 @@ function TrackTable({
                 track={track}
                 showArtistName={showArtistName}
                 showAlbumName={showAlbumName}
+                showAlbumImage={showAlbumImage}
                 key={index}
               />
             ))}

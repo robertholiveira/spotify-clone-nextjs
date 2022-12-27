@@ -3,14 +3,14 @@
   padding: 10px;
 
   &Wrapper {
-    background: #1c1c1c;
+    background: #2d2d2d89;
     padding: 40px 20px;
     border-radius: 10px;
     transition: background 0.2s linear;
     height: 100%;
 
     &:hover {
-      background: #292929;
+      background: #383838bc;
 
       & .imageContainer svg {
         opacity: 1;

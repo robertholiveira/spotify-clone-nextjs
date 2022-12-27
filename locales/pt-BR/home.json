@@ -1,0 +1,10 @@
+{
+  "welcome": {
+    "morning": "Bom dia",
+    "afternoon": "Boa tarde",
+    "evening": "Boa noite"
+  },
+  "recentlyPlayed": "Tocadas recentemente",
+  "relatedArtists": "Porque você ouviu",
+  "trending": "Em alta: "
+}

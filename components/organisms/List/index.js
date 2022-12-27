@@ -14,7 +14,6 @@ import AlbumItem from "@/components/molecules/AlbumItem";
 import styles from "./styles.module.scss";
 
 function List({ items, title, type }) {
-  console.log(items);
   const hasItems = items && items.length > 0;
 
   const paginationRef = useRef(null);

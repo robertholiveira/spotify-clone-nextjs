@@ -4,42 +4,36 @@ import styles from "./styles.module.scss";
 import { useAudio } from "@/lib/AudioContext";
 
 import msToSecondsAndMinutes from "@/utils/msToSecondsAndMinutes";
+import noPicture from "public/images/no-picture-artist.jpg";
 
 function TrackTableItem({
   track,
   showArtistName = true,
   showAlbumName = true,
+  showAlbumImage = true,
 }) {
-  const { currentTrack, setCurrentTrack, play, pause, isPlaying } = useAudio();
+  const { handlePause, isPlaying, isActiveTrack, playTrack } = useAudio();
 
-  const albumImage = track.album.images.length
-    ? track.album.images[0].url
-    : noPicture.src;
-
-  const playTrack = () => {
-    setCurrentTrack(track);
-    play();
-  };
-
-  const isActiveTrack = () => {
-    return currentTrack?.id === track.id;
-  };
+  const albumImage =
+    showAlbumImage && track.album && track.album.images.length
+      ? track.album.images[0].url
+      : noPicture.src;
 
   return (
     <tr className={`${styles.trackItem} ${isActiveTrack() && styles.active}`}>
       <td>
         <span className={styles.playPauseWrapper}>
-          {isActiveTrack() && isPlaying ? (
-            <RiPauseLine onClick={() => pause()} className={styles.playPause} />
+          {isActiveTrack(track) && isPlaying ? (
+            <RiPauseLine onClick={handlePause} className={styles.playPause} />
           ) : (
             <div
               className={`${styles.playWrapper} ${
-                isActiveTrack() && styles.activePlaying
+                isActiveTrack(track) && styles.activePlaying
               }`}
             >
               <span>{track.number}</span>
               <RiPlayLine
-                onClick={() => playTrack()}
+                onClick={() => playTrack(track)}
                 className={styles.playPause}
               />
             </div>
@@ -48,7 +42,7 @@ function TrackTableItem({
       </td>
       <td>
         <div className={styles.trackName}>
-          <img src={albumImage} />
+          {showAlbumImage && <img src={albumImage} />}
           <span>{track.name}</span>
         </div>
       </td>
@@ -59,7 +53,7 @@ function TrackTableItem({
       )}
       {showAlbumName && (
         <td>
-          <span>{track.album.name}</span>
+          <span>{track.album?.name}</span>
         </td>
       )}
       <td>

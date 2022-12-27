@@ -1,6 +1,6 @@
-const addIndexToTracks = (tracks) => {
+const addIndexToTracks = (tracks, offset = 0) => {
   return tracks.map((track, index) => {
-    track.number = index + 1;
+    track.number = offset + index + 1;
     return track;
   });
 };

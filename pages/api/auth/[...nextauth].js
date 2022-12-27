@@ -1,13 +1,17 @@
 import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 
+const scope =
+  "user-read-email user-read-private playlist-read-private playlist-read-collaborative user-top-read user-read-recently-played";
+
 export const authOptions = {
   providers: [
     SpotifyProvider({
       clientId: process.env.SPOTIFY_CLIENT_ID,
       clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-      authorization:
-        "https://accounts.spotify.com/authorize?scope=user-read-email&scope=user-read-email%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20user-top-read%20user-read-recently-played",
+      authorization: {
+        params: { scope },
+      },
     }),
   ],
   callbacks: {
@@ -15,6 +19,7 @@ export const authOptions = {
       if (account) {
         token.id = account.id;
         token.accessToken = account.access_token;
+        token.expiresAt = account.expires_at * 1000;
       }
       return token;
     },

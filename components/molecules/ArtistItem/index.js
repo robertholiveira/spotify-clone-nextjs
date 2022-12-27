@@ -1,10 +1,39 @@
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
+
+import { getArtistTopTracks } from "@/services/spotify";
+
 import ListItem from "@/components/molecules/ListItem";
 import noPicture from "public/images/no-picture-artist.jpg";
+import getCountry from "@/utils/getCountry";
 
 function ArtistItem({ artist }) {
+  const { lang } = useTranslation();
+
+  const [trackToPlay, setTrackToPlay] = useState(null);
+
+  const { data: session } = useSession();
+  const country = getCountry(lang);
+
   const artistImage = artist.images.length
     ? artist.images[0].url
     : noPicture.src;
+
+  useEffect(() => {
+    const getTrack = async () => {
+      if (session) {
+        const topTracks = await getArtistTopTracks(
+          session,
+          country,
+          artist.id,
+          1
+        );
+        setTrackToPlay(topTracks[0]);
+      }
+    };
+    getTrack();
+  }, [session]);
 
   return (
     <ListItem
@@ -12,6 +41,7 @@ function ArtistItem({ artist }) {
       circleImage={true}
       link={`/dashboard/artist/${artist.id}`}
       title={artist.name}
+      trackToPlay={trackToPlay}
     />
   );
 }

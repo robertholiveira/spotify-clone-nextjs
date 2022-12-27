@@ -1,0 +1,8 @@
+{
+  "trackTable": {
+    "name": "Nome",
+    "artist": "Artista",
+    "album": "Álbum",
+    "duration": "Duração"
+  }
+}

@@ -1,0 +1,25 @@
+.contentHeader {
+  z-index: 3;
+  padding: 50px 30px 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  & .title {
+    font-size: 60px;
+    font-weight: 700;
+  }
+  & img {
+    max-width: 200px;
+  }
+
+  & .subTitle {
+    font-size: 12px;
+  }
+
+  & .type {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}

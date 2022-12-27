@@ -1,18 +1,21 @@
+import useTranslation from "next-translate/useTranslation";
+
 import Title from "../Title";
 import styles from "./styles.module.scss";
 
 function Welcome({ name }) {
+  const { t } = useTranslation("home");
   const getGreting = () => {
     const date = new Date();
 
     const hours = date.getHours();
     switch (true) {
-      case hours < 10:
-        return "Bom dia";
+      case hours < 12:
+        return t("welcome.morning");
       case hours < 18:
-        return "Boa tarde";
+        return t("welcome.afternoon");
       default:
-        return "Boa noite";
+        return t("welcome.evening");
     }
   };
 

@@ -1,29 +1,11 @@
 import apiClient from "@/utils/apiClient";
 import addIndexToTracks from "@/utils/addIndexToTracks";
 import sortAlbumsByReleaseDate from "@/utils/sortAlbumsByReleaseDate";
+import changeItemsArrayToTracks from "@/utils/changeItemsArrayToTracks";
 
-export const refreshToken = async (token) => {
-  const url = "https://accounts.spotify.com/api/token";
-
-  const options = {
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  };
-
-  const body = {
-    client_id: process.env.SPOTIFY_CLIENT_ID,
-    client_secret: process.env.SPOTIFY_CLIENT_SECRET,
-    grant_type: "refresh_token",
-    refresh_token: token.refreshToken,
-  };
-
-  const { data } = await apiClient().post(url, body, options);
-
-  return {
-    ...token,
-    accessToken: data.access_token,
-    expiresAt: Date.now() + data.expires_in * 1000,
-    refreshToken: data.refresh_token ?? token.refreshToken,
-  };
+export const getUserProfile = async (session, id) => {
+  const response = await apiClient(session.accessToken).get(`users/${id}`);
+  return response ? response.data : {};
 };
 
 export const getUserPlaylists = async (session) => {
@@ -100,4 +82,56 @@ export const getArtistAlbums = async (session, id, limit) => {
   );
 
   return response ? sortAlbumsByReleaseDate(response.data.items) : [];
+};
+
+export const getAlbum = async (session, id) => {
+  const response = await apiClient(session.accessToken).get(`/albums/${id}`);
+
+  if (response) {
+    let album = {
+      ...response.data,
+      tracks: addIndexToTracks(response.data.tracks.items),
+    };
+
+    album.tracks = album.tracks.map((track) => {
+      return {
+        ...track,
+        album: {
+          name: album.name,
+          images: album.images,
+          id: album.id,
+        },
+      };
+    });
+
+    return album;
+  }
+  return {};
+};
+
+export const getPlaylist = async (session, id) => {
+  const response = await apiClient(session.accessToken).get(`/playlists/${id}`);
+
+  if (response) {
+    let playlist = {
+      ...response.data,
+      tracks: {
+        ...response.data.tracks,
+        items: addIndexToTracks(
+          changeItemsArrayToTracks(response.data.tracks.items)
+        ),
+      },
+    };
+    return playlist;
+  }
+  return {};
+};
+
+export const getPlaylistTracks = async (session, id, limit, offset) => {
+  const response = await apiClient(session.accessToken).get(
+    `/playlists/${id}/tracks?limit=${limit}&offset=${offset}`
+  );
+  return response
+    ? addIndexToTracks(changeItemsArrayToTracks(response.data.items), offset)
+    : [];
 };

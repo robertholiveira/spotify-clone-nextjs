@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 
 import { getSearch } from "@/services/spotify";
 
@@ -8,6 +9,7 @@ import TrackTable from "@/components/organisms/TrackTable";
 import List from "@/components/organisms/List";
 
 function Search() {
+  const { t } = useTranslation("search");
   const { data: session } = useSession();
   const [artists, setArtists] = useState([]);
   const [tracks, setTracks] = useState([]);
@@ -31,15 +33,15 @@ function Search() {
     <>
       <SearchField
         searchHandler={() => searchHandler()}
-        placeholder="Pesquise por artistas ou músicas"
+        placeholder={t("search")}
         ref={searchRef}
         isLoading={loading}
       />
 
       {!loading && (
         <>
-          <List type="artist" items={artists} title="Artistas" />
-          <TrackTable tracks={tracks} title="Músicas" />
+          <List type="artist" items={artists} title={t("artists")} />
+          <TrackTable tracks={tracks} title={t("tracks")} />
         </>
       )}
     </>

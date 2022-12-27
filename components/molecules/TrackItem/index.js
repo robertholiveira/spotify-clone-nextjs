@@ -10,9 +10,10 @@ function TrackItem({ track }) {
   return (
     <ListItem
       image={albumImage}
-      link={`/album/{${track.album.id}`}
+      link={`dashboard/album/${track.album.id}`}
       title={track.name}
       subTitle={track.artists[0].name}
+      trackToPlay={track}
     />
   );
 }
