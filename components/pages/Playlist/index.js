@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 
 import { useColor } from "@/lib/ColorContext";
 
@@ -11,6 +12,8 @@ import { getPlaylistTracks } from "@/services/spotify";
 import ButtonLoader from "@/components/atoms/ButtonLoader";
 
 function Playlist({ playlist }) {
+  const { t } = useTranslation("playlist");
+
   const { data: session } = useSession();
 
   const [tracks, setTracks] = useState([]);
@@ -35,10 +38,14 @@ function Playlist({ playlist }) {
     const likes = numberWithDots(playlist.followers.total);
     const totalTracks = numberWithDots(playlist.tracks.total);
 
-    return `${ownerDisplayName} • ${likes} curtidas •  ${totalTracks} músicas`;
+    return `${ownerDisplayName} • ${likes} ${t("likes")} •  ${totalTracks} ${t(
+      "tracks"
+    )}`;
   };
 
-  const getPlaylistType = `Playlist ${playlist.public ? "pública" : "privada"}`;
+  const playlistType = playlist.public
+    ? t("playlistType.public")
+    : t("playlistType.private");
 
   const loadMoreHandler = async () => {
     setIsLoading(true);
@@ -64,7 +71,7 @@ function Playlist({ playlist }) {
         image={playlistImage}
         title={playlist.name}
         subTitle={getSubTitle()}
-        type={getPlaylistType}
+        type={playlistType}
       />
       <ContentWrapper addBackgroundColor={true}>
         <TrackTable

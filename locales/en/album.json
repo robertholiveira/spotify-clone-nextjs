@@ -1,0 +1,7 @@
+{
+  "tracks": "songs",
+  "albumType": {
+    "single": "Single",
+    "album": "Album"
+  }
+}

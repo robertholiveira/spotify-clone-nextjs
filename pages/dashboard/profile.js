@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/react";
 import Head from "next/head";
+import useTranslation from "next-translate/useTranslation";
 
 import { getUserTopTracks, getUserTopArtists } from "@/services/spotify";
 import Profile from "@/components/pages/Profile";
@@ -16,10 +17,12 @@ export async function getServerSideProps(ctx) {
 }
 
 export default function ProfilePage({ topTracks, topArtists, user }) {
+  const { t } = useTranslation("profile");
+
   return (
     <>
       <Head>
-        <title>Perfil | Spotify </title>
+        <title>{`${t(t("titlePage"))} | Spotify `}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <ContentWrapper>

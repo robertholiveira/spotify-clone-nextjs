@@ -1,11 +1,13 @@
 import { RiHome4Line, RiSearchLine, RiUser3Line } from "react-icons/ri";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 
 import { useAudio } from "@/lib/AudioContext";
 import styles from "./styles.module.scss";
 import logo from "public/images/spotify-logo.png";
 
 function Sidebar() {
+  const { t } = useTranslation("common");
   const { currentTrack } = useAudio();
   return (
     <div className={styles.sidebar}>
@@ -14,17 +16,17 @@ function Sidebar() {
         <ul className={styles.menu}>
           <li>
             <Link href="/dashboard">
-              <RiHome4Line /> Início
+              <RiHome4Line /> {t("sidebar.menu.home")}
             </Link>
           </li>
           <li>
             <Link href="/dashboard/search">
-              <RiSearchLine /> Buscar
+              <RiSearchLine /> {t("sidebar.menu.search")}
             </Link>
           </li>
           <li>
             <Link href="/dashboard/profile">
-              <RiUser3Line /> Perfil
+              <RiUser3Line /> {t("sidebar.menu.profile")}
             </Link>
           </li>
         </ul>

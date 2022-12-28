@@ -1,0 +1,8 @@
+{
+  "likes": "curtidas",
+  "tracks": "músicas",
+  "playlistType": {
+    "public": "Playlist pública",
+    "private": "Playlist privada"
+  }
+}

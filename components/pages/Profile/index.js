@@ -1,9 +1,13 @@
+import useTranslation from "next-translate/useTranslation";
+
 import List from "@/components/organisms/List";
 import TrackTable from "@/components/organisms/TrackTable";
 
 import styles from "./styles.module.scss";
 
 function Profile({ topTracks, topArtists, user }) {
+  const { t } = useTranslation("profile");
+
   return (
     <>
       <div className={styles.profileBox}>
@@ -11,12 +15,8 @@ function Profile({ topTracks, topArtists, user }) {
         <h2>{user.name}</h2>
       </div>
 
-      <List
-        items={topArtists}
-        type="artist"
-        title="Artistas mais escutados por você"
-      />
-      <TrackTable tracks={topTracks} title="Músicas mais escutadas por você" />
+      <List items={topArtists} type="artist" title={t("topArtists")} />
+      <TrackTable tracks={topTracks} title={t("topTracks")} />
     </>
   );
 }

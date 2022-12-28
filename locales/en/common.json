@@ -4,5 +4,12 @@
     "artist": "Artist",
     "album": "Album",
     "duration": "Duration"
+  },
+  "sidebar": {
+    "menu": {
+      "home": "Browse",
+      "search": "Search",
+      "profile": "Profile"
+    }
   }
 }

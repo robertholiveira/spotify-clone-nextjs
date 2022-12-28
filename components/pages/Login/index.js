@@ -1,10 +1,13 @@
 import { signIn } from "next-auth/react";
+import useTranslation from "next-translate/useTranslation";
 
 import logo from "public/images/spotify-logo.png";
 
 import styles from "./styles.module.scss";
 
 function Login() {
+  const { t } = useTranslation("login");
+
   const handleLogin = () => {
     signIn("spotify", { callbackUrl: "/dashboard/profile" });
   };
@@ -13,12 +16,9 @@ function Login() {
     <>
       <img className={styles.logo} src={logo.src} />
       <button onClick={handleLogin} className={styles.button}>
-        Fazer login no Spotify
+        {t("buttonLogin")}
       </button>
-      <p>
-        Ao clicar no botão acima você será redirecionado para a página de Login
-        do Spotify.
-      </p>
+      <p>{t("explanationLogin")}</p>
     </>
   );
 }

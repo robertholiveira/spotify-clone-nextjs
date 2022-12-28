@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import useTranslation from "next-translate/useTranslation";
+
 import { useColor } from "@/lib/ColorContext";
 
 import ContentWrapper from "@/components/organisms/ContentWrapper";
@@ -7,6 +9,8 @@ import TrackTable from "@/components/organisms/TrackTable";
 import ContentHeader from "@/components/organisms/ContentHeader";
 
 function Album({ album }) {
+  const { t } = useTranslation("album");
+
   const { getPredominantColor } = useColor();
 
   const albumImage = album.images.length ? album.images[0].url : noPicture.src;
@@ -20,15 +24,13 @@ function Album({ album }) {
     const artistName = album.artists[0].name;
     const totalTracks = album.total_tracks;
 
-    return `${artistName} • ${releaseDate.getFullYear()}  •  ${totalTracks} músicas`;
+    return `${artistName} • ${releaseDate.getFullYear()}  •  ${totalTracks} ${t(
+      "tracks"
+    )}`;
   };
 
-  const getAlbumType = () => {
-    let albumType = "";
-    if (album.album_type === "album") albumType = "Álbum";
-    if (album.album_type === "single") albumType = "Single";
-    return albumType;
-  };
+  const albumType =
+    album.album_type === "album" ? t("albumType.album") : t("albumType.single");
 
   return (
     <>
@@ -36,7 +38,7 @@ function Album({ album }) {
         image={albumImage}
         title={album.name}
         subTitle={getSubTitle()}
-        type={getAlbumType()}
+        type={albumType}
       />
       <ContentWrapper addBackgroundColor={true}>
         <TrackTable

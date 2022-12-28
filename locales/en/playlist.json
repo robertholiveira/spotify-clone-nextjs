@@ -1,0 +1,8 @@
+{
+  "likes": "likes",
+  "tracks": "songs",
+  "playlistType": {
+    "public": "Public playlit",
+    "private": "Private playlist"
+  }
+}

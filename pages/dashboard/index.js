@@ -43,7 +43,7 @@ export default function HomePage({
   return (
     <>
       <Head>
-        <title>Spotify </title>
+        <title>Spotify</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Home

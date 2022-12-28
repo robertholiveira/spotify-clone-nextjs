@@ -3,7 +3,12 @@
   "defaultLocale": "pt-BR",
   "pages": {
     "*": ["common"],
+    "/login": ["login"],
     "/dashboard": ["home"],
-    "/dashboard/search": ["search"]
+    "/dashboard/search": ["search"],
+    "/dashboard/profile": ["profile"],
+    "/dashboard/artist/[id]": ["artist"],
+    "/dashboard/album/[id]": ["album"],
+    "/dashboard/playlist/[id]": ["playlist"]
   }
 }
