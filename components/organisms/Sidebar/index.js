@@ -6,6 +6,7 @@ import { IoAlbumsOutline } from "react-icons/io5";
 import { useAudio } from "@/lib/AudioContext";
 import styles from "./styles.module.scss";
 import logo from "public/images/spotify-logo.png";
+import likedSongsImage from "@/public/images/liked-songs-cover.jpg";
 
 import LanguageSwitch from "@/components/molecules/LanguageSwitch";
 
@@ -37,6 +38,15 @@ function Sidebar() {
           <li>
             <Link href="/dashboard/collection/playlists">
               <IoAlbumsOutline /> {t("sidebar.menu.library")}
+            </Link>
+          </li>
+          <li>
+            <Link href="/dashboard/collection/tracks">
+              <img
+                src={likedSongsImage.src}
+                className={styles.likedSongsIcon}
+              />{" "}
+              {t("sidebar.menu.likedSongs")}
             </Link>
           </li>
         </ul>

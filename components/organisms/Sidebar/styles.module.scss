@@ -11,12 +11,12 @@
   left: 0;
   padding-top: 30px;
 
-  & .logo {
+  .logo {
     max-width: 200px;
     padding: 0 30px;
   }
 
-  & .menu {
+  .menu {
     padding: 0 30px;
     width: 100%;
     display: flex;
@@ -34,14 +34,19 @@
         &:hover {
           opacity: 1;
         }
-        svg {
+        svg,
+        .likedSongsIcon {
           width: 30px;
           margin-right: 10px;
+        }
+
+        .likedSongsIcon {
+          border-radius: 4px;
         }
       }
     }
   }
-  & .cover {
+  .cover {
     opacity: 0;
     position: relative;
     bottom: -400px;

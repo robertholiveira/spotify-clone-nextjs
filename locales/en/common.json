@@ -10,7 +10,8 @@
       "home": "Browse",
       "search": "Search",
       "profile": "Profile",
-      "library": "Your Library"
+      "library": "Your Library",
+      "likedSongs": "Liked Songs"
     }
   },
   "collection": {
