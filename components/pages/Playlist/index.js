@@ -26,8 +26,10 @@ function Playlist({ playlist }) {
     : noPicture.src;
 
   useEffect(() => {
-    getPredominantColor(playlistImage);
-  }, [playlistImage]);
+    setInterval(() => {
+      getPredominantColor(playlistImage);
+    }, 100);
+  }, []);
 
   useEffect(() => {
     setTracks(playlist.tracks.items);

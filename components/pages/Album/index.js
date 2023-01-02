@@ -16,8 +16,10 @@ function Album({ album }) {
   const albumImage = album.images.length ? album.images[0].url : noPicture.src;
 
   useEffect(() => {
-    getPredominantColor(albumImage);
-  }, [albumImage]);
+    setInterval(() => {
+      getPredominantColor(albumImage);
+    }, 100);
+  }, []);
 
   const getSubTitle = () => {
     const releaseDate = new Date(album.release_date);

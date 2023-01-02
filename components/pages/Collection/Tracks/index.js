@@ -21,14 +21,14 @@ function Tracks({ userTracks }) {
   const [tracks, setTracks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { predominantColor, setPredominantColor } = useColor();
+  const { setPredominantColor } = useColor();
 
   useEffect(() => {
     const likedSongsColor = "#58449d";
     setInterval(() => {
       setPredominantColor(likedSongsColor);
     }, 100);
-  }, [predominantColor]);
+  }, []);
 
   useEffect(() => {
     setTracks(userTracks.items);

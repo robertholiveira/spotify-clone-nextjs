@@ -27,7 +27,9 @@ function Artist({ artist, topTracks, albums, relatedArtists }) {
     : noPicture.src;
 
   useEffect(() => {
-    getPredominantColor(artistImage);
+    setInterval(() => {
+      getPredominantColor(artistImage);
+    }, 100);
   }, [artistImage]);
 
   useEffect(() => {

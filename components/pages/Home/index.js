@@ -15,7 +15,9 @@ function Home({ recentTracks, relatedArtists, featuredPlaylists, user }) {
   const image = recentTracks.length ? recentTracks[0].album.images[0].url : "";
 
   useEffect(() => {
-    getPredominantColor(image);
+    setInterval(() => {
+      getPredominantColor(image);
+    }, 100);
   }, []);
 
   return (
