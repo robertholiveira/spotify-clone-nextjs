@@ -12,13 +12,13 @@ export default withAuth(
         .split("-")?.[0]
         .toLowerCase() || "en";
 
-    const cookieLocale = cookies.get("NEXT_LOCALE")?.value.toLocaleLowerCase();
+    const cookieLocale = cookies.get("NEXT_LOCALE")?.value;
 
     const redirectLocale = cookieLocale
       ? cookieLocale
       : browserLanguage === "en"
       ? "en"
-      : "pt-br";
+      : "pt-BR";
 
     const expireTime = new Date(nextauth.token.expiresAt);
     const expiredToken = new Date() >= expireTime;

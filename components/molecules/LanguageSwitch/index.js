@@ -15,8 +15,7 @@ function LanguageSwitch({ alternativeLayout = false }) {
 
   const { t } = useTranslation("common");
 
-  const getTranslatedLocale = (locale) =>
-    t(`languages.${locale.toLocaleLowerCase()}`);
+  const getTranslatedLocale = (locale) => t(`languages.${locale}`);
 
   const handleActive = () => {
     setIsActive((prevState) => {

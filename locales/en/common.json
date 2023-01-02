@@ -22,7 +22,7 @@
   "languageSwitch": "Language: ",
   "languages": {
     "en": "English",
-    "pt-br": "Portuguese (Brazil)"
+    "pt-BR": "Portuguese (Brazil)"
   },
   "loadMoreButton": {
     "text": "Load more"

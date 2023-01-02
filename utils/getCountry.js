@@ -1,5 +1,5 @@
 const getCountry = (locale) => {
-  return locale == "pt-br" ? "BR" : "US";
+  return locale == "en" ? "US" : "pt-br";
 };
 
 export default getCountry;
