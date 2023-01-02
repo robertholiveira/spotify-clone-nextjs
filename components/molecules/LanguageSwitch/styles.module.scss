@@ -5,11 +5,11 @@
   position: relative;
   justify-content: center;
   width: 100%;
-  & span {
+  span {
     font-size: 11px;
     color: #c4c4c4;
   }
-  & .languageSwitchWrapper {
+  .languageSwitchWrapper {
     position: relative;
     z-index: 16;
     background: rgba(253, 253, 253, 0);
@@ -18,7 +18,7 @@
     width: 100%;
     display: inline-block;
 
-    & h3 {
+    h3 {
       -moz-user-select: none;
       -webkit-user-select: none;
       -ms-user-select: none;
@@ -29,7 +29,7 @@
       -moz-transition: all 0.25s ease;
       transition: all 0.25s ease;
 
-      & a {
+      a {
         cursor: pointer;
         color: #fff;
         display: block;
@@ -40,7 +40,7 @@
       }
     }
 
-    & ul {
+    ul {
       position: absolute;
       left: 0;
       right: 0;
@@ -50,9 +50,9 @@
       opacity: 0;
       min-width: fit-content;
       white-space: nowrap;
-      & li {
+      li {
         border-bottom: 1px solid #0e0e0e;
-        & a {
+        a {
           background: #222;
           position: relative;
           display: block;
@@ -68,7 +68,7 @@
       }
     }
     &.isActive {
-      & ul {
+      ul {
         box-shadow: rgba(0, 0, 0, 0.2) 0 2px 10px, 0 0 0 1px rgba(0, 0, 0, 0.04);
         opacity: 1;
         visibility: visible;
@@ -81,18 +81,18 @@
   &.alternativeLayout {
     justify-content: start;
     padding: 0 30px 30px;
-    & h3 a {
+    h3 a {
       border: none;
       padding: 0;
       text-align: left;
     }
-    & span {
+    span {
       text-align: left;
     }
-    & ul {
+    ul {
       padding: 35px 0 0;
 
-      & li a {
+      li a {
         padding: 5px 10px;
       }
     }

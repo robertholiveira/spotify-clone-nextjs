@@ -19,7 +19,7 @@
     bottom: 0;
   }
 
-  & .controls {
+  .controls {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -27,51 +27,51 @@
     align-items: center;
     gap: 5px;
 
-    & .playPause {
+    .playPause {
       svg {
         width: 40px;
       }
     }
 
-    & .rangeTime {
+    .rangeTime {
       min-width: 400px;
     }
 
-    & .range {
+    .range {
       display: flex;
       align-items: center;
       gap: 10px;
 
-      & > span {
+      > span {
         font-size: 11px;
         color: #ffffff80;
       }
     }
   }
 
-  & .trackInfo {
+  .trackInfo {
     width: 25%;
     display: flex;
     flex-direction: column;
 
-    & .trackName {
+    .trackName {
       font-size: 12px;
       padding-bottom: 5px;
     }
 
-    & .artistName {
+    .artistName {
       font-size: 11px;
       color: #ffffff80;
     }
   }
 
-  & .volume {
+  .volume {
     width: 25%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 10px;
-    & .rangeVolume {
+    .rangeVolume {
       max-width: 150px;
     }
   }

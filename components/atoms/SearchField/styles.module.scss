@@ -12,7 +12,7 @@
       border-bottom: 2px solid #1bd760;
     }
   }
-  & .icon {
+  .icon {
     position: absolute;
     right: 10px;
     top: calc(50% - 5px);
@@ -23,7 +23,7 @@
       opacity: 1;
     }
 
-    & i {
+    i {
       position: relative;
       height: 30px;
       width: 30px;
@@ -51,5 +51,14 @@
         background: transparent;
       }
     }
+  }
+}
+
+@keyframes around {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

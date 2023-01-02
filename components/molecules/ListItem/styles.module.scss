@@ -8,18 +8,18 @@
   &:hover {
     background: #383838bc;
 
-    & .imageContainer svg {
+    .imageContainer svg {
       opacity: 1;
       bottom: 10px;
     }
   }
-  & a {
+  a {
     text-align: center;
     display: flex;
     flex-direction: column;
-    & .imageContainer {
+    .imageContainer {
       position: relative;
-      & img {
+      img {
         border-radius: 20px;
         margin: 0 auto 20px;
         width: 160px;
@@ -30,7 +30,7 @@
         }
       }
 
-      & svg {
+      svg {
         transition: all 0.2s linear;
         opacity: 0;
         position: absolute;
@@ -43,7 +43,7 @@
         color: #000;
       }
     }
-    & .title {
+    .title {
       font-size: 15px;
       font-weight: 600;
       &.limited {
@@ -52,7 +52,7 @@
         white-space: nowrap;
       }
     }
-    & .subTitle {
+    .subTitle {
       padding-top: 8px;
       font-size: 13px;
       font-weight: 400;

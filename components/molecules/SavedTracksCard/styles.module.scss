@@ -30,7 +30,7 @@
   &:hover::before {
     opacity: 1;
   }
-  & .tracksText {
+  .tracksText {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.6;
@@ -41,23 +41,23 @@
     text-overflow: ellipsis;
     margin-bottom: 20px;
     margin-top: 20px;
-    & .title {
+    .title {
       color: #fff;
     }
 
-    & .track {
+    .track {
       color: #fff;
       opacity: 0.5;
     }
   }
-  & .title {
+  .title {
     font-size: 30px;
     font-weight: 600;
     display: flex;
     padding-bottom: 10px;
   }
 
-  & .total {
+  .total {
     font-size: 15px;
     font-weight: 500;
   }

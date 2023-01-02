@@ -5,19 +5,19 @@
   align-items: center;
   gap: 30px;
 
-  & .title {
+  .title {
     font-size: 60px;
     font-weight: 700;
   }
-  & img {
+  img {
     max-width: 200px;
   }
 
-  & .subTitle {
+  .subTitle {
     font-size: 12px;
   }
 
-  & .button {
+  .button {
     padding: 10px 15px;
     background: transparent;
     border: 1px solid #fff;
@@ -26,7 +26,7 @@
     font-size: 12px;
     margin-top: 20px;
   }
-  & .type {
+  .type {
     font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
