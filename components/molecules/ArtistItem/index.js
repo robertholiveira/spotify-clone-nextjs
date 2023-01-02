@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import useTranslation from "next-translate/useTranslation";
 
 import { getArtistTopTracks } from "@/services/spotify";
 
@@ -13,10 +12,9 @@ function ArtistItem({ artist }) {
   const [trackToPlay, setTrackToPlay] = useState(null);
 
   const { data: session } = useSession();
-  const { lang } = useTranslation();
   const { locale } = useRouter();
 
-  const country = getCountry(lang);
+  const country = getCountry(locale);
 
   const artistImage = artist.images.length
     ? artist.images[0].url
