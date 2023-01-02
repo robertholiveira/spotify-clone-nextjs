@@ -1,6 +1,10 @@
+import useTranslation from "next-translate/useTranslation";
+
 import styles from "./styles.module.scss";
 
 function ButtonLoader({ onClick, isLoading }) {
+  const { t } = useTranslation("common");
+
   return (
     <div className={styles.buttonLoader}>
       <button onClick={onClick}>
@@ -9,7 +13,7 @@ function ButtonLoader({ onClick, isLoading }) {
             <i />
           </div>
         ) : (
-          "Carregar mais"
+          t("loadMoreButton.text")
         )}
       </button>
     </div>

@@ -1,14 +1,16 @@
 {
-  "locales": ["pt-BR", "en"],
-  "defaultLocale": "pt-BR",
+  "locales": ["pt-br", "en"],
+  "defaultLocale": "en",
   "pages": {
     "*": ["common"],
-    "/login": ["login"],
+    "/auth/login": ["login"],
     "/dashboard": ["home"],
     "/dashboard/search": ["search"],
     "/dashboard/profile": ["profile"],
     "/dashboard/artist/[id]": ["artist"],
     "/dashboard/album/[id]": ["album"],
-    "/dashboard/playlist/[id]": ["playlist"]
+    "/dashboard/playlist/[id]": ["playlist"],
+    "/dashboard/collection/playlists": ["collection.playlists"],
+    "/dashboard/collection/artists": ["collection.artists"]
   }
 }

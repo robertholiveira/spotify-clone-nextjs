@@ -5,7 +5,15 @@ import { useAudio } from "@/lib/AudioContext";
 
 import styles from "./styles.module.scss";
 
-function ListItem({ image, link, title, subTitle, circleImage, trackToPlay }) {
+function ListItem({
+  image,
+  link,
+  title,
+  subTitle,
+  circleImage,
+  trackToPlay,
+  limitedText = false,
+}) {
   const { handlePause, isPlaying, isActiveTrack, playTrack } = useAudio();
 
   const onClickPlay = (e) => {
@@ -45,8 +53,20 @@ function ListItem({ image, link, title, subTitle, circleImage, trackToPlay }) {
             </div>
           )}
         </div>
-        <span className={styles.title}>{title}</span>
-        {subTitle && <span className={styles.subTitle}>{subTitle}</span>}
+        <span
+          className={`${styles.title} ${limitedText ? styles.limited : ""}`}
+        >
+          {title}
+        </span>
+        {subTitle && (
+          <span
+            className={`${styles.subTitle} ${
+              limitedText ? styles.limited : ""
+            }`}
+          >
+            {subTitle}
+          </span>
+        )}
       </Link>
     </div>
   );

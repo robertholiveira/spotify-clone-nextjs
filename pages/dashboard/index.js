@@ -16,13 +16,17 @@ export async function getServerSideProps(ctx) {
 
   const country = getCountry(locale);
 
-  let recentTracks = await getRecentlyPlayed(session, 6);
+  let recentTracks = await getRecentlyPlayed(session, 10);
   recentTracks = recentTracks.map((el) => el.track);
 
   let relatedArtists = recentTracks[0].artists[0];
-  relatedArtists.items = await getRelatedArtists(session, relatedArtists.id, 6);
+  relatedArtists.items = await getRelatedArtists(
+    session,
+    relatedArtists.id,
+    10
+  );
 
-  const featuredPlaylists = await getFeaturedPlaylists(session, country, 6);
+  const featuredPlaylists = await getFeaturedPlaylists(session, country, 10);
 
   return {
     props: {

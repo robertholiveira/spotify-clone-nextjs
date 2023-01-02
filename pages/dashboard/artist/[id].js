@@ -6,6 +6,7 @@ import {
   getArtistTopTracks,
   getArtistAlbums,
   getRelatedArtists,
+  checkIfUserfollowArtist,
 } from "@/services/spotify";
 import Artist from "@/components/pages/Artist";
 
@@ -14,7 +15,11 @@ export async function getServerSideProps(ctx) {
   const session = await getSession(ctx);
   const { id } = ctx.query;
 
-  const artist = await getArtist(session, id);
+  let artist = await getArtist(session, id);
+
+  const followed = await checkIfUserfollowArtist(session, id);
+
+  artist.followed = followed;
 
   const topTracks = await getArtistTopTracks(session, "br", id, 5);
 

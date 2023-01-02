@@ -9,7 +9,22 @@
     "menu": {
       "home": "Navegar",
       "search": "Pesquisar",
-      "profile": "Perfil"
+      "profile": "Perfil",
+      "library": "Sua Biblioteca"
     }
+  },
+  "collection": {
+    "menu": {
+      "playlists": "Playlists",
+      "artists": "Artistas"
+    }
+  },
+  "languageSwitch": "Idioma: ",
+  "languages": {
+    "en": "Inglês",
+    "pt-br": "Português (Brasil)"
+  },
+  "loadMoreButton": {
+    "text": "Carregar mais"
   }
 }

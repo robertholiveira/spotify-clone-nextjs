@@ -1,0 +1,14 @@
+.collectionMenu {
+  & ul {
+    display: flex;
+    & li {
+      padding: 12px;
+      margin-right: 10px;
+      font-weight: 600;
+      &.active {
+        background: #363636;
+        border-radius: 5px;
+      }
+    }
+  }
+}

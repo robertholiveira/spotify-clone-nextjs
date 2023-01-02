@@ -1,5 +1,8 @@
 import { signIn } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
+import { getCookie } from "cookies-next";
+
+import LanguageSwitch from "@/components/molecules/LanguageSwitch";
 
 import logo from "public/images/spotify-logo.png";
 
@@ -9,7 +12,8 @@ function Login() {
   const { t } = useTranslation("login");
 
   const handleLogin = () => {
-    signIn("spotify", { callbackUrl: "/dashboard/profile" });
+    const cookieLocale = getCookie("NEXT_LOCALE");
+    signIn("spotify", { callbackUrl: `/${cookieLocale}/dashboard/profile` });
   };
 
   return (
@@ -19,6 +23,9 @@ function Login() {
         {t("buttonLogin")}
       </button>
       <p>{t("explanationLogin")}</p>
+      <div className={styles.languageSwitch}>
+        <LanguageSwitch />
+      </div>
     </>
   );
 }

@@ -1,20 +1,26 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useTranslation from "next-translate/useTranslation";
+import { useSession } from "next-auth/react";
 
 import { useColor } from "@/lib/ColorContext";
 
 import numberWithDots from "@/utils/numberWithDots";
 
-import List from "@/components/organisms/List";
+import Carrousel from "@/components/organisms/Carrousel";
 import ContentWrapper from "@/components/organisms/ContentWrapper";
 import TrackTable from "@/components/organisms/TrackTable";
 
 import ContentHeader from "@/components/organisms/ContentHeader";
+import { followArtist, unfollowArtist } from "@/services/spotify";
 
 function Artist({ artist, topTracks, albums, relatedArtists }) {
   const { t } = useTranslation("artist");
 
+  const { data: session } = useSession();
+
   const { getPredominantColor } = useColor();
+
+  const [followed, setFollowed] = useState();
 
   const artistImage = artist.images.length
     ? artist.images[0].url
@@ -23,6 +29,20 @@ function Artist({ artist, topTracks, albums, relatedArtists }) {
   useEffect(() => {
     getPredominantColor(artistImage);
   }, [artistImage]);
+
+  useEffect(() => {
+    setFollowed(artist.followed);
+  }, []);
+
+  const handleFollowArtist = async () => {
+    if (followed) {
+      await unfollowArtist(session, artist.id);
+      setFollowed(false);
+    } else {
+      await followArtist(session, artist.id);
+      setFollowed(true);
+    }
+  };
 
   return (
     <>
@@ -33,6 +53,10 @@ function Artist({ artist, topTracks, albums, relatedArtists }) {
         subTitle={`${numberWithDots(artist.followers.total)} ${t(
           "monthlyListeners"
         )}`}
+        button={{
+          label: followed ? "Seguindo" : "Seguir",
+          onClick: handleFollowArtist,
+        }}
       />
       <ContentWrapper addBackgroundColor={true}>
         <TrackTable
@@ -41,8 +65,8 @@ function Artist({ artist, topTracks, albums, relatedArtists }) {
           showArtistName={false}
           showHeader={false}
         />
-        <List items={albums} type="album" title={t("discography")} />
-        <List items={relatedArtists} type="artist" title={t("related")} />
+        <Carrousel items={albums} type="album" title={t("discography")} />
+        <Carrousel items={relatedArtists} type="artist" title={t("related")} />
       </ContentWrapper>
     </>
   );

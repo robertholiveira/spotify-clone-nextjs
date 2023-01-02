@@ -17,6 +17,15 @@
     font-size: 12px;
   }
 
+  & .button {
+    padding: 10px 15px;
+    background: transparent;
+    border: 1px solid #fff;
+    display: block;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-top: 20px;
+  }
   & .type {
     font-size: 10px;
     font-weight: 600;

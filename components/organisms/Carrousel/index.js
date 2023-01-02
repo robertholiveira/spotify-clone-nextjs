@@ -13,7 +13,7 @@ import AlbumItem from "@/components/molecules/AlbumItem";
 
 import styles from "./styles.module.scss";
 
-function List({ items, title, type }) {
+function Carrousel({ items, title, type }) {
   const hasItems = items && items.length > 0;
 
   const paginationRef = useRef(null);
@@ -50,4 +50,4 @@ function List({ items, title, type }) {
   );
 }
 
-export default List;
+export default Carrousel;

@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 
 const scope =
-  "user-read-email user-read-private playlist-read-private playlist-read-collaborative user-top-read user-read-recently-played";
+  "user-follow-read user-follow-modify user-library-read user-library-modify user-read-email user-read-private playlist-read-private playlist-read-collaborative user-top-read user-read-recently-played";
 
 export const authOptions = {
   providers: [
@@ -30,7 +30,7 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: "/login",
+    signIn: "/auth/login",
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

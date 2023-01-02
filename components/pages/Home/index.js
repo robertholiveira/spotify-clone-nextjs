@@ -5,7 +5,7 @@ import { useColor } from "@/lib/ColorContext";
 
 import Welcome from "@/components/atoms/Welcome";
 import ContentWrapper from "@/components/organisms/ContentWrapper";
-import List from "@/components/organisms/List";
+import Carrousel from "@/components/organisms/Carrousel";
 
 function Home({ recentTracks, relatedArtists, featuredPlaylists, user }) {
   const { t } = useTranslation("home");
@@ -22,16 +22,20 @@ function Home({ recentTracks, relatedArtists, featuredPlaylists, user }) {
     <>
       <ContentWrapper addBackgroundColor={true}>
         <Welcome name={user.name} />
-        <List items={recentTracks} type="track" title={t("recentlyPlayed")} />
-        <List
+        <Carrousel
+          items={recentTracks}
+          type="track"
+          title={t("recentlyPlayed")}
+        />
+        <Carrousel
           items={relatedArtists.items}
           type="artist"
           title={`${t("relatedArtists")} ${relatedArtists.name}`}
         />
-        <List
+        <Carrousel
           items={featuredPlaylists.playlists.items}
           type="playlist"
-          title={`${t('trending')}: ${featuredPlaylists.message}`}
+          title={`${t("trending")} ${featuredPlaylists.message}`}
         />
       </ContentWrapper>
     </>

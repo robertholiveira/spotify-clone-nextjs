@@ -1,0 +1,100 @@
+.languageSwitch {
+  display: inline-flex;
+  flex-direction: column;
+  padding-top: 10px;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  & span {
+    font-size: 11px;
+    color: #c4c4c4;
+  }
+  & .languageSwitchWrapper {
+    position: relative;
+    z-index: 16;
+    background: rgba(253, 253, 253, 0);
+    font-size: 12px;
+    line-height: 30px;
+    width: 100%;
+    display: inline-block;
+
+    & h3 {
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      position: relative;
+      z-index: 1;
+      -webkit-transition: all 0.25s ease;
+      -moz-transition: all 0.25s ease;
+      transition: all 0.25s ease;
+
+      & a {
+        cursor: pointer;
+        color: #fff;
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid var(--primary);
+        padding: 10px 20px;
+        min-width: 200px;
+      }
+    }
+
+    & ul {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      padding: 52px 0 0;
+      visibility: hidden;
+      opacity: 0;
+      min-width: fit-content;
+      white-space: nowrap;
+      & li {
+        border-bottom: 1px solid #0e0e0e;
+        & a {
+          background: #222;
+          position: relative;
+          display: block;
+          color: #d8d7d7;
+
+          padding: 10px 20px;
+          text-align: center;
+        }
+
+        &:last-child a {
+          border-radius: 0 0 5px 5px;
+        }
+      }
+    }
+    &.isActive {
+      & ul {
+        box-shadow: rgba(0, 0, 0, 0.2) 0 2px 10px, 0 0 0 1px rgba(0, 0, 0, 0.04);
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: opacity 0.25s ease;
+        -moz-transition: opacity 0.25s ease;
+        transition: opacity 0.25s ease;
+      }
+    }
+  }
+  &.alternativeLayout {
+    justify-content: start;
+    padding: 0 30px 30px;
+    & h3 a {
+      border: none;
+      padding: 0;
+      text-align: left;
+    }
+    & span {
+      text-align: left;
+    }
+    & ul {
+      padding: 35px 0 0;
+
+      & li a {
+        padding: 5px 10px;
+      }
+    }
+  }
+}

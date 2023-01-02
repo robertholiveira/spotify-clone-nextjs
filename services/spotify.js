@@ -8,9 +8,36 @@ export const getUserProfile = async (session, id) => {
   return response ? response.data : {};
 };
 
-export const getUserPlaylists = async (session) => {
-  const response = await apiClient(session.accessToken).get("me/playlists");
-  return response ? response.data.items : [];
+export const getUserPlaylists = async (session, limit, offset) => {
+  const response = await apiClient(session.accessToken).get(
+    `/me/playlists?limit=${limit}&offset=${offset}`
+  );
+  return response ? response.data : {};
+};
+
+export const getUserArtists = async (session, limit, after = null) => {
+  let url = `/me/following?type=artist&limit=${limit}`;
+  if (after) url = `${url}&=after=${after}`;
+
+  const response = await apiClient(session.accessToken).get(url);
+  return response ? response.data.artists : {};
+};
+
+export const getUserTracks = async (session, limit, offset = 0) => {
+  const response = await apiClient(session.accessToken).get(
+    `me/tracks?limit=${limit}&offset=${offset}`
+  );
+  if (response) {
+    let userTracks = {
+      ...response.data,
+      items: addIndexToTracks(
+        changeItemsArrayToTracks(response.data.items),
+        offset
+      ),
+    };
+    return userTracks;
+  }
+  return {};
 };
 
 export const getUserTopTracks = async (session, limit) => {
@@ -127,11 +154,35 @@ export const getPlaylist = async (session, id) => {
   return {};
 };
 
-export const getPlaylistTracks = async (session, id, limit, offset) => {
+export const getPlaylistTracks = async (session, id, limit, offset = 0) => {
   const response = await apiClient(session.accessToken).get(
     `/playlists/${id}/tracks?limit=${limit}&offset=${offset}`
   );
   return response
     ? addIndexToTracks(changeItemsArrayToTracks(response.data.items), offset)
     : [];
+};
+
+export const checkIfUserfollowArtist = async (session, id) => {
+  const response = await apiClient(session.accessToken).get(
+    `/me/following/contains?ids=${id}&type=artist`
+  );
+
+  if (response) return response.data;
+  return false;
+};
+
+export const followArtist = async (session, id) => {
+  const response = await apiClient(session.accessToken).put(
+    `/me/following?ids=${id}&type=artist`
+  );
+
+  return response.status === 204 ? true : false;
+};
+
+export const unfollowArtist = async (session, id) => {
+  const response = await apiClient(session.accessToken).delete(
+    `/me/following?ids=${id}&type=artist`
+  );
+  return response.status === 200 ? true : false;
 };

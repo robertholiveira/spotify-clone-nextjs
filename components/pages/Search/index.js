@@ -6,7 +6,7 @@ import { getSearch } from "@/services/spotify";
 
 import SearchField from "@/components/atoms/SearchField";
 import TrackTable from "@/components/organisms/TrackTable";
-import List from "@/components/organisms/List";
+import List from "@/components/organisms/Carrousel";
 
 function Search() {
   const { t } = useTranslation("search");

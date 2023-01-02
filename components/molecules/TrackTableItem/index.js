@@ -1,10 +1,10 @@
 import { RiPlayLine, RiPauseLine } from "react-icons/ri";
 
-import styles from "./styles.module.scss";
 import { useAudio } from "@/lib/AudioContext";
 
 import msToSecondsAndMinutes from "@/utils/msToSecondsAndMinutes";
 import noPicture from "public/images/no-picture-artist.jpg";
+import styles from "./styles.module.scss";
 
 function TrackTableItem({
   track,

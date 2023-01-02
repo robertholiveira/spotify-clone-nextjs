@@ -8,10 +8,12 @@ import ContentWrapper from "@/components/organisms/ContentWrapper";
 import TrackTable from "@/components/organisms/TrackTable";
 import ContentHeader from "@/components/organisms/ContentHeader";
 import numberWithDots from "@/utils/numberWithDots";
-import { getPlaylistTracks } from "@/services/spotify";
+import { getUserTracks } from "@/services/spotify";
 import ButtonLoader from "@/components/atoms/ButtonLoader";
 
-function Playlist({ playlist }) {
+import likedSongsImage from "@/public/images/liked-songs-cover.jpg";
+
+function Tracks({ userTracks }) {
   const { t } = useTranslation("playlist");
 
   const { data: session } = useSession();
@@ -19,59 +21,47 @@ function Playlist({ playlist }) {
   const [tracks, setTracks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { getPredominantColor } = useColor();
-
-  const playlistImage = playlist.images.length
-    ? playlist.images[0].url
-    : noPicture.src;
+  const { predominantColor, setPredominantColor } = useColor();
 
   useEffect(() => {
-    getPredominantColor(playlistImage);
-  }, [playlistImage]);
+    const likedSongsColor = "#58449d";
+    setInterval(() => {
+      setPredominantColor(likedSongsColor);
+    }, 100);
+  }, [predominantColor]);
 
   useEffect(() => {
-    setTracks(playlist.tracks.items);
+    setTracks(userTracks.items);
   }, []);
 
   const getSubTitle = () => {
-    const ownerDisplayName = playlist.owner.display_name;
-    const likes = numberWithDots(playlist.followers.total);
-    const totalTracks = numberWithDots(playlist.tracks.total);
+    if (!session) return;
+    const ownerDisplayName = session.user.name;
+    const totalTracks = numberWithDots(userTracks.total);
 
-    return `${ownerDisplayName} • ${likes} ${t("likes")} •  ${totalTracks} ${t(
-      "tracks"
-    )}`;
+    return `${ownerDisplayName}  •  ${totalTracks} ${t("tracks")}`;
   };
-
-  const playlistType = playlist.public
-    ? t("playlistType.public")
-    : t("playlistType.private");
 
   const loadMoreHandler = async () => {
     setIsLoading(true);
-    let playlistTracks = await getPlaylistTracks(
-      session,
-      playlist.id,
-      playlist.tracks.limit,
-      tracks.length
-    );
+    let moreTracks = await getUserTracks(session, 50, tracks.length);
 
     setTracks((prevTracks) => {
-      return prevTracks.concat(playlistTracks);
+      return prevTracks.concat(moreTracks.items);
     });
     setIsLoading(false);
   };
 
   const hasTotalTracks = () => {
-    return playlist.tracks.total === tracks.length;
+    return userTracks.total === tracks.length;
   };
   return (
     <>
       <ContentHeader
-        image={playlistImage}
-        title={playlist.name}
+        image={likedSongsImage.src}
+        title={"Músicas curtidas"}
         subTitle={getSubTitle()}
-        type={playlistType}
+        type={"Playlist"}
       />
       <ContentWrapper addBackgroundColor={true}>
         <TrackTable
@@ -88,4 +78,4 @@ function Playlist({ playlist }) {
   );
 }
 
-export default Playlist;
+export default Tracks;

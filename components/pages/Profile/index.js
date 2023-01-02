@@ -1,6 +1,6 @@
 import useTranslation from "next-translate/useTranslation";
 
-import List from "@/components/organisms/List";
+import Carrousel from "@/components/organisms/Carrousel";
 import TrackTable from "@/components/organisms/TrackTable";
 
 import styles from "./styles.module.scss";
@@ -15,7 +15,7 @@ function Profile({ topTracks, topArtists, user }) {
         <h2>{user.name}</h2>
       </div>
 
-      <List items={topArtists} type="artist" title={t("topArtists")} />
+      <Carrousel items={topArtists} type="artist" title={t("topArtists")} />
       <TrackTable tracks={topTracks} title={t("topTracks")} />
     </>
   );

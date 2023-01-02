@@ -6,12 +6,11 @@ import { getUserTopTracks, getUserTopArtists } from "@/services/spotify";
 import Profile from "@/components/pages/Profile";
 import ContentWrapper from "@/components/organisms/ContentWrapper";
 
-// This gets called on every request
 export async function getServerSideProps(ctx) {
   const session = await getSession(ctx);
 
   const topTracks = await getUserTopTracks(session, 10);
-  const topArtists = await getUserTopArtists(session, 6);
+  const topArtists = await getUserTopArtists(session, 10);
 
   return { props: { topTracks, topArtists, user: session.user } };
 }

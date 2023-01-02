@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import useTranslation from "next-translate/useTranslation";
 
 import { getArtistTopTracks } from "@/services/spotify";
@@ -9,11 +10,12 @@ import noPicture from "public/images/no-picture-artist.jpg";
 import getCountry from "@/utils/getCountry";
 
 function ArtistItem({ artist }) {
-  const { lang } = useTranslation();
-
   const [trackToPlay, setTrackToPlay] = useState(null);
 
   const { data: session } = useSession();
+  const { lang } = useTranslation();
+  const { locale } = useRouter();
+
   const country = getCountry(lang);
 
   const artistImage = artist.images.length
@@ -33,7 +35,7 @@ function ArtistItem({ artist }) {
       }
     };
     getTrack();
-  }, [session]);
+  }, [session, locale]);
 
   return (
     <ListItem
