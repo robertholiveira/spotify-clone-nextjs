@@ -11,6 +11,7 @@
     "/dashboard/album/[id]": ["album"],
     "/dashboard/playlist/[id]": ["playlist"],
     "/dashboard/collection/playlists": ["collection.playlists"],
-    "/dashboard/collection/artists": ["collection.artists"]
+    "/dashboard/collection/artists": ["collection.artists"],
+    "/dashboard/collection/tracks": ["collection.tracks"]
   }
 }

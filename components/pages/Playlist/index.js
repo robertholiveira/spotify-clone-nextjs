@@ -19,15 +19,15 @@ function Playlist({ playlist }) {
   const [tracks, setTracks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { getPredominantColor } = useColor();
+  const { changePredominantColor } = useColor();
 
   const playlistImage = playlist.images.length
     ? playlist.images[0].url
     : noPicture.src;
 
   useEffect(() => {
-    setInterval(() => {
-      getPredominantColor(playlistImage);
+    setTimeout(() => {
+      changePredominantColor(playlistImage);
     }, 100);
   }, []);
 

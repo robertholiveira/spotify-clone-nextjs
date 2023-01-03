@@ -18,7 +18,7 @@ function Artist({ artist, topTracks, albums, relatedArtists }) {
 
   const { data: session } = useSession();
 
-  const { getPredominantColor } = useColor();
+  const { changePredominantColor } = useColor();
 
   const [followed, setFollowed] = useState();
 
@@ -27,8 +27,8 @@ function Artist({ artist, topTracks, albums, relatedArtists }) {
     : noPicture.src;
 
   useEffect(() => {
-    setInterval(() => {
-      getPredominantColor(artistImage);
+    setTimeout(() => {
+      changePredominantColor(artistImage);
     }, 100);
   }, [artistImage]);
 

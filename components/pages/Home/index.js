@@ -10,13 +10,13 @@ import Carrousel from "@/components/organisms/Carrousel";
 function Home({ recentTracks, relatedArtists, featuredPlaylists, user }) {
   const { t } = useTranslation("home");
 
-  const { getPredominantColor } = useColor();
-
-  const image = recentTracks.length ? recentTracks[0].album.images[0].url : "";
+  const { setPredominantColor } = useColor();
 
   useEffect(() => {
-    setInterval(() => {
-      getPredominantColor(image);
+    const likedSongsColor = "#58449d";
+
+    setTimeout(() => {
+      setPredominantColor(likedSongsColor);
     }, 100);
   }, []);
 

@@ -14,7 +14,7 @@ import ButtonLoader from "@/components/atoms/ButtonLoader";
 import likedSongsImage from "@/public/images/liked-songs-cover.jpg";
 
 function Tracks({ userTracks }) {
-  const { t } = useTranslation("playlist");
+  const { t } = useTranslation("collection.tracks");
 
   const { data: session } = useSession();
 
@@ -25,7 +25,7 @@ function Tracks({ userTracks }) {
 
   useEffect(() => {
     const likedSongsColor = "#58449d";
-    setInterval(() => {
+    setTimeout(() => {
       setPredominantColor(likedSongsColor);
     }, 100);
   }, []);
@@ -59,9 +59,9 @@ function Tracks({ userTracks }) {
     <>
       <ContentHeader
         image={likedSongsImage.src}
-        title={"Músicas curtidas"}
+        title={t("title")}
         subTitle={getSubTitle()}
-        type={"Playlist"}
+        type={t("type")}
       />
       <ContentWrapper addBackgroundColor={true}>
         <TrackTable

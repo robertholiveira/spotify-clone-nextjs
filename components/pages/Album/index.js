@@ -11,13 +11,13 @@ import ContentHeader from "@/components/organisms/ContentHeader";
 function Album({ album }) {
   const { t } = useTranslation("album");
 
-  const { getPredominantColor } = useColor();
+  const { changePredominantColor } = useColor();
 
   const albumImage = album.images.length ? album.images[0].url : noPicture.src;
 
   useEffect(() => {
-    setInterval(() => {
-      getPredominantColor(albumImage);
+    setTimeout(() => {
+      changePredominantColor(albumImage);
     }, 100);
   }, []);
 
