@@ -7,11 +7,14 @@ import NProgress from "nprogress";
 import "@/styles/globals.css";
 import "@/styles/nprogress.css";
 
+import useCheckMobileScreen from "@/utils/useCheckMobileScreen";
 import DashLayout from "@/components/templates/DashLayout";
 import AuthLayout from "@/components/templates/AuthLayout";
+import MobileMessage from "@/components/organisms/MobileMessage";
 
 function App({ Component, pageProps: { session, ...pageProps } }) {
   const { pathname } = useRouter();
+  const isMobile = useCheckMobileScreen();
 
   const Layout = pathname.includes("/dashboard") ? DashLayout : AuthLayout;
 
@@ -23,9 +26,13 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
 
   return (
     <SessionProvider session={session} refetchInterval={86000}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      {isMobile ? (
+        <MobileMessage />
+      ) : (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      )}
     </SessionProvider>
   );
 }

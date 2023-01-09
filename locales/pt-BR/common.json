@@ -27,5 +27,6 @@
   },
   "loadMoreButton": {
     "text": "Carregar mais"
-  }
+  },
+  "mobileMessage": "Essa aplicação está disponível apenas para dispositivos Desktop :("
 }

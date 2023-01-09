@@ -27,5 +27,6 @@
   },
   "loadMoreButton": {
     "text": "Load more"
-  }
+  },
+  "mobileMessage": "This app is only available for desktop devices :("
 }

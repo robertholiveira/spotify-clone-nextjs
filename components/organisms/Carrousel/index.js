@@ -36,7 +36,20 @@ function Carrousel({ items, title, type }) {
           }}
           modules={[Pagination]}
           spaceBetween={20}
-          slidesPerView={6}
+          breakpoints={{
+            640: {
+              slidesPerView: 3,
+            },
+            768: {
+              slidesPerView: 4,
+            },
+            1024: {
+              slidesPerView: 5,
+            },
+            1250: {
+              slidesPerView: 6,
+            },
+          }}
         >
           {items.map((item, index) => (
             <SwiperSlide className={styles.swiperSlide} key={index}>
