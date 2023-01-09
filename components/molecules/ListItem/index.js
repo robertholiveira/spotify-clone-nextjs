@@ -1,5 +1,6 @@
 import { RiPauseMiniFill, RiPlayMiniFill } from "react-icons/ri";
 import Link from "next/link";
+import Image from "next/image";
 
 import { useAudio } from "@/lib/AudioContext";
 
@@ -30,7 +31,9 @@ function ListItem({
     <div className={styles.listItemWrapper}>
       <Link href={link}>
         <div className={styles.imageContainer}>
-          <img
+          <Image
+            width={400}
+            height={400}
             src={image}
             className={circleImage ? styles.circle : undefined}
           />

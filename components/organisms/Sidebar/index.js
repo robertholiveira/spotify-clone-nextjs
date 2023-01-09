@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import { RiHome4Line, RiSearchLine, RiUser3Line } from "react-icons/ri";
@@ -18,7 +19,12 @@ function Sidebar() {
     <div className={styles.sidebar}>
       <div>
         <LanguageSwitch alternativeLayout={true} />
-        <img className={styles.logo} src={logo.src} />
+        <Image
+          width={300}
+          height={300}
+          className={styles.logo}
+          src={logo.src}
+        />
         <ul className={styles.menu}>
           <li>
             <Link href="/dashboard">
@@ -42,7 +48,9 @@ function Sidebar() {
           </li>
           <li>
             <Link href="/dashboard/collection/tracks">
-              <img
+              <Image
+                width={100}
+                height={100}
                 src={likedSongsImage.src}
                 className={styles.likedSongsIcon}
               />{" "}
@@ -52,7 +60,9 @@ function Sidebar() {
         </ul>
       </div>
 
-      <img
+      <Image
+        width={400}
+        height={400}
         src={currentTrack ? currentTrack.album.images[0].url : ""}
         className={`${styles.cover} ${currentTrack && styles.active}`}
       />

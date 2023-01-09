@@ -23,7 +23,7 @@ function Artists({ artists: userArtists }) {
   useEffect(() => {
     setArtists(userArtists.items);
     setAfter(userArtists.cursors.after);
-  }, []);
+  }, [setArtists, setAfter, userArtists]);
 
   const loadMoreHandler = async () => {
     setIsLoading(true);

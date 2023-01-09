@@ -18,7 +18,7 @@ function Home({ recentTracks, relatedArtists, featuredPlaylists, user }) {
     setTimeout(() => {
       setPredominantColor(likedSongsColor);
     }, 100);
-  }, []);
+  }, [setPredominantColor]);
 
   return (
     <>

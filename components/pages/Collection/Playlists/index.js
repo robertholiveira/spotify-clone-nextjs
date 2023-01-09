@@ -23,7 +23,7 @@ function Playlists({ playlists: userPlaylists, tracks }) {
 
   useEffect(() => {
     setPlaylists(userPlaylists.items);
-  }, []);
+  }, [setPlaylists, userPlaylists]);
 
   const loadMoreHandler = async () => {
     setIsLoading(true);

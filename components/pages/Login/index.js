@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { signIn } from "next-auth/react";
 import useTranslation from "next-translate/useTranslation";
 import { getCookie } from "cookies-next";
@@ -18,7 +19,7 @@ function Login() {
 
   return (
     <>
-      <img className={styles.logo} src={logo.src} />
+      <Image width={300} height={300} className={styles.logo} src={logo.src} />
       <button onClick={handleLogin} className={styles.button}>
         {t("buttonLogin")}
       </button>

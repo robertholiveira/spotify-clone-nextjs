@@ -28,11 +28,11 @@ function Tracks({ userTracks }) {
     setTimeout(() => {
       setPredominantColor(likedSongsColor);
     }, 100);
-  }, []);
+  }, [setPredominantColor]);
 
   useEffect(() => {
     setTracks(userTracks.items);
-  }, []);
+  }, [setTracks, userTracks]);
 
   const getSubTitle = () => {
     if (!session) return;

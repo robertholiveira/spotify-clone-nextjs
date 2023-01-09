@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import useTranslation from "next-translate/useTranslation";
 
 import styles from "./styles.module.scss";
@@ -9,7 +11,7 @@ function MobileMessage() {
 
   return (
     <div className={styles.mobileMessage}>
-      <img className={styles.logo} src={logo.src} />
+      <Image width={300} height={300} className={styles.logo} src={logo.src} />
       <h2 className={styles.title}>{t("mobileMessage")}</h2>
     </div>
   );

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { useColor } from "@/lib/ColorContext";
 
 import styles from "./styles.module.scss";
@@ -11,7 +13,7 @@ function ContentHeader({ image, type, title, subTitle, button }) {
         style={{ background: predominantColor }}
         className={styles.contentHeader}
       >
-        <img src={image} />
+        <Image width={500} height={500} src={image} />
         <div>
           <span className={styles.type}>{type}</span>
           <h1 className={styles.title}>{title}</h1>

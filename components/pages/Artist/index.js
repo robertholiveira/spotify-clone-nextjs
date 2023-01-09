@@ -34,7 +34,7 @@ function Artist({ artist, topTracks, albums, relatedArtists }) {
 
   useEffect(() => {
     setFollowed(artist.followed);
-  }, []);
+  }, [setFollowed, artist]);
 
   const handleFollowArtist = async () => {
     if (followed) {

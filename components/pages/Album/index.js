@@ -19,7 +19,7 @@ function Album({ album }) {
     setTimeout(() => {
       changePredominantColor(albumImage);
     }, 100);
-  }, []);
+  }, [changePredominantColor, albumImage]);
 
   const getSubTitle = () => {
     const releaseDate = new Date(album.release_date);

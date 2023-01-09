@@ -29,11 +29,11 @@ function Playlist({ playlist }) {
     setTimeout(() => {
       changePredominantColor(playlistImage);
     }, 100);
-  }, []);
+  }, [changePredominantColor, playlistImage]);
 
   useEffect(() => {
     setTracks(playlist.tracks.items);
-  }, []);
+  }, [setTracks, playlist]);
 
   const getSubTitle = () => {
     const ownerDisplayName = playlist.owner.display_name;

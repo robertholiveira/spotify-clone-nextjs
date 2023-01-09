@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 
@@ -6,7 +7,7 @@ function ProfileCard({ user }) {
     <>
       {user && (
         <Link href="/dashboard/profile" className={styles.profileCard}>
-          <img src={user.image} />
+          <Image width={200} height={200} src={user.image} />
           <h2>{user.name}</h2>
         </Link>
       )}

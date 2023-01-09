@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { RiPlayLine, RiPauseLine } from "react-icons/ri";
 
 import { useAudio } from "@/lib/AudioContext";
@@ -42,7 +44,9 @@ function TrackTableItem({
       </td>
       <td>
         <div className={styles.trackName}>
-          {showAlbumImage && <img src={albumImage} />}
+          {showAlbumImage && (
+            <Image width={200} height={200} src={albumImage} />
+          )}
           <span>{track.name}</span>
         </div>
       </td>

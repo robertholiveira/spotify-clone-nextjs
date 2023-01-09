@@ -5,6 +5,9 @@ const nextConfig = {
   i18n: {
     localeDetection: true,
   },
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextTranslate(nextConfig);
