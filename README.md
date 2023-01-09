@@ -14,9 +14,10 @@ This repository aims to create a Spotify Web Player with NextJS Framework and th
 
 [Next Translate](https://github.com/aralroca/next-translate)
 
-## Demonstração
+## Video Demo
 
-Insira um gif ou um link de alguma demonstração
+https://user-images.githubusercontent.com/31046982/211395635-034716e6-5ec7-45da-9ce0-216738ebd347.mp4
+
 
 ## Environment variables
 
