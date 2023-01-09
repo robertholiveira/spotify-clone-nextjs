@@ -29,7 +29,7 @@ function ListItem({
 
   return (
     <div className={styles.listItemWrapper}>
-      <Link href={link}>
+      <Link href={link} passHref>
         <div className={styles.imageContainer}>
           <Image
             width={400}

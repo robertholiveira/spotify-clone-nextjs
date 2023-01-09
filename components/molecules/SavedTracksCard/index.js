@@ -20,6 +20,7 @@ function SavedTracksCard({ tracks }) {
   };
   return (
     <Link
+      passHref
       href="/dashboard/collection/tracks"
       className={styles.savedTracksCard}
     >

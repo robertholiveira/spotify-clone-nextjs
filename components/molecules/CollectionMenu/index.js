@@ -27,7 +27,9 @@ function CollectionMenu() {
               key={index}
               className={router.pathname == link.path ? styles.active : ""}
             >
-              <Link href={link.path}>{link.label}</Link>
+              <Link href={link.path} passHref>
+                {link.label}
+              </Link>
             </li>
           );
         })}

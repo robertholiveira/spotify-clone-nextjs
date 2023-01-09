@@ -55,9 +55,7 @@ function LanguageSwitch({ alternativeLayout = false }) {
         }`}
       >
         <h3>
-          <a onClick={handleActive} passHref>
-            {getTranslatedLocale(currentLocale)}
-          </a>
+          <a onClick={handleActive}>{getTranslatedLocale(currentLocale)}</a>
         </h3>
         <ul>
           {locales.map((locale) => {
@@ -65,7 +63,7 @@ function LanguageSwitch({ alternativeLayout = false }) {
 
             return (
               <li key={locale}>
-                <Link href={`/${locale}${pathname}`} locale={locale}>
+                <Link href={`/${locale}${pathname}`} locale={locale} passHref>
                   {getTranslatedLocale(locale)}
                 </Link>
               </li>

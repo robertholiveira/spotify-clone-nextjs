@@ -27,27 +27,27 @@ function Sidebar() {
         />
         <ul className={styles.menu}>
           <li>
-            <Link href="/dashboard">
+            <Link href="/dashboard" passHref>
               <RiHome4Line /> {t("sidebar.menu.home")}
             </Link>
           </li>
           <li>
-            <Link href="/dashboard/search">
+            <Link href="/dashboard/search" passHref>
               <RiSearchLine /> {t("sidebar.menu.search")}
             </Link>
           </li>
           <li>
-            <Link href="/dashboard/profile">
+            <Link href="/dashboard/profile" passHref>
               <RiUser3Line /> {t("sidebar.menu.profile")}
             </Link>
           </li>
           <li>
-            <Link href="/dashboard/collection/playlists">
+            <Link href="/dashboard/collection/playlists" passHref>
               <IoAlbumsOutline /> {t("sidebar.menu.library")}
             </Link>
           </li>
           <li>
-            <Link href="/dashboard/collection/tracks">
+            <Link href="/dashboard/collection/tracks" passHref>
               <Image
                 width={100}
                 height={100}
