@@ -33,7 +33,7 @@ function ArtistItem({ artist }) {
       }
     };
     getTrack();
-  }, [session, locale]);
+  }, [artist, country, session, locale]);
 
   return (
     <ListItem

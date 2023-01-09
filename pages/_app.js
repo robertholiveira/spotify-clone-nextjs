@@ -22,7 +22,7 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
     Router.events.on("routeChangeStart", () => NProgress.start());
 
     Router.events.on("routeChangeComplete", () => NProgress.done(false));
-  }, [Router]);
+  });
 
   return (
     <SessionProvider session={session} refetchInterval={86000}>

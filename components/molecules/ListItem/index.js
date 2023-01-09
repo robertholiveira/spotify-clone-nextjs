@@ -35,7 +35,7 @@ function ListItem({
             width={400}
             height={400}
             src={image}
-            className={circleImage ? styles.circle : undefined}
+            className={circleImage ? styles.circle : ""}
           />
 
           {isActiveTrack(trackToPlay) && isPlaying ? (

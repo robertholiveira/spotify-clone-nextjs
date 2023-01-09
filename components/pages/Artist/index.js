@@ -30,7 +30,7 @@ function Artist({ artist, topTracks, albums, relatedArtists }) {
     setTimeout(() => {
       changePredominantColor(artistImage);
     }, 100);
-  }, [artistImage]);
+  }, [artistImage, changePredominantColor]);
 
   useEffect(() => {
     setFollowed(artist.followed);
